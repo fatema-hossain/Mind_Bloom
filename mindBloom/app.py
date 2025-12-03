@@ -2,20 +2,34 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
+import warnings
+from pathlib import Path
+
+# Silence that sklearn feature-names warning
+warnings.filterwarnings(
+    "ignore",
+    message="X does not have valid feature names, but RandomForestClassifier was fitted with feature names",
+)
+
+# -----------------------------
+# PATH SETUP (IMPORTANT FOR STREAMLIT CLOUD)
+# -----------------------------
+# BASE_DIR = folder where this app.py lives
+BASE_DIR = Path(__file__).resolve().parent
 
 # -----------------------------
 # LOAD TRAINED OBJECTS
 # -----------------------------
-best_model = joblib.load("best_model.pkl")
-ohe_final = joblib.load("ohe_final.pkl")
-scaler = joblib.load("scaler.pkl")
-final_numeric = joblib.load("final_numeric.pkl")
-final_cat_cols = joblib.load("final_cat_cols.pkl")
-label_encoder = joblib.load("label_encoder.pkl")
+best_model = joblib.load(BASE_DIR / "best_model.pkl")
+ohe_final = joblib.load(BASE_DIR / "ohe_final.pkl")
+scaler = joblib.load(BASE_DIR / "scaler.pkl")
+final_numeric = joblib.load(BASE_DIR / "final_numeric.pkl")
+final_cat_cols = joblib.load(BASE_DIR / "final_cat_cols.pkl")
+label_encoder = joblib.load(BASE_DIR / "label_encoder.pkl")
 
-# optional: use your original dataset to get dropdown options
+# Optional: load original dataset to get dropdown options
 try:
-    df_template = pd.read_csv("PPD_dataset_v2.csv")
+    df_template = pd.read_csv(BASE_DIR / "PPD_dataset_v2.csv")
 except Exception:
     df_template = None
 
@@ -63,9 +77,9 @@ def predict_with_model(df_input: pd.DataFrame) -> pd.DataFrame:
 # -----------------------------
 st.set_page_config(page_title="PPD ML Classifier", page_icon="🧠")
 
-st.title(" Postpartum Depression (EPDS Result) Classifier")
+st.title("🧠 Postpartum Depression (EPDS Result) Classifier")
 st.write(
-    "This app uses your trained Random Forest model to predict **EPDS Result**."
+    "This app uses a trained Random Forest model to predict **EPDS Result** for Bangladeshi mothers."
 )
 
 # 🔽 MODE SELECTOR
@@ -80,7 +94,7 @@ st.markdown("---")
 # MODE 1: CSV UPLOAD
 # =========================================================
 if mode == "📁 CSV upload (many patients)":
-    st.subheader("📂 1. Upload your CSV file")
+    st.subheader("📂 Upload your CSV file")
 
     uploaded_file = st.file_uploader("Choose a CSV file", type=["csv"])
 
@@ -142,12 +156,11 @@ else:
         st.info("No numeric features were used in this model.")
     else:
         for col in final_numeric:
-            # Use template to guess a reasonable range, if available
+            # Try to guess a reasonable range from the template, if available
             min_val, max_val, default_val = 0.0, 100.0, 0.0
             if df_template is not None and col in df_template.columns:
                 try:
-                    col_series = pd.to_numeric(df_template[col], errors="coerce")
-                    col_series = col_series.dropna()
+                    col_series = pd.to_numeric(df_template[col], errors="coerce").dropna()
                     if not col_series.empty:
                         min_val = float(col_series.min())
                         max_val = float(col_series.max())
@@ -173,15 +186,12 @@ else:
                 options = sorted(df_template[col].dropna().unique().tolist())
 
             if options and len(options) <= 30:
-                # Use dropdown with existing categories
                 choice = st.selectbox(col, options)
             else:
-                # Fallback: free text input
                 choice = st.text_input(col, value="")
             input_data[col] = choice
 
     if st.button("Predict EPDS Result"):
-        # Build a one-row dataframe
         df_single = pd.DataFrame([input_data])
 
         try:
