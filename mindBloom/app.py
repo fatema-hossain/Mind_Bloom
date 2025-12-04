@@ -77,7 +77,7 @@ def predict_with_model(df_input: pd.DataFrame) -> pd.DataFrame:
 # -----------------------------
 st.set_page_config(page_title="PPD ML Classifier", page_icon="🧠")
 
-st.title("🧠 Postpartum Depression (EPDS Result) Classifier")
+st.title("Mind Bloom")
 st.write(
     "This app uses a trained Random Forest model to predict **EPDS Result** for Bangladeshi mothers."
 )
@@ -85,7 +85,7 @@ st.write(
 # 🔽 MODE SELECTOR
 mode = st.radio(
     "Choose input mode:",
-    ["📁 CSV upload (many patients)", "✍️ Manual form (single patient)"],
+    ["📁 CSV upload ", "✍️ Manual form "],
 )
 
 st.markdown("---")
@@ -93,7 +93,7 @@ st.markdown("---")
 # =========================================================
 # MODE 1: CSV UPLOAD
 # =========================================================
-if mode == "📁 CSV upload (many patients)":
+if mode == "📁 CSV upload ":
     st.subheader("📂 Upload your CSV file")
 
     uploaded_file = st.file_uploader("Choose a CSV file", type=["csv"])
@@ -205,3 +205,4 @@ else:
             st.dataframe(df_result_single)
         except Exception as e:
             st.error(f"Something went wrong during prediction: {e}")
+
