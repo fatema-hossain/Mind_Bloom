@@ -85,7 +85,7 @@ st.write(
 # 🔽 MODE SELECTOR
 mode = st.radio(
     "Choose input mode:",
-    ["📁 CSV upload ", "✍️ Manual form "],
+    ["📁 CSV upload ", " Manual form "],
 )
 
 st.markdown("---")
@@ -205,4 +205,5 @@ else:
             st.dataframe(df_result_single)
         except Exception as e:
             st.error(f"Something went wrong during prediction: {e}")
+
 
