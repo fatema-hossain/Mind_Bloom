@@ -1,0 +1,63 @@
+[00:00:01.360] Server  LOG      ✓ Ready in 919ms
+[00:00:05.034] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:38.228] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:24.926] Server  LOG      ✓ Compiled in 90ms
+[00:04:51.115] Server  LOG      ✓ Compiled in 138ms
+[00:05:05.105] Server  LOG      ✓ Compiled in 145ms
+[00:05:05.221] Browser ERROR   ./app/page.tsx:153:28
+Parsing ecmascript source code failed
+  151 | // No longer needed - using minimal endpoint
+  152 |   Fear_of_pregnancy: "Fear of pregnancy",
+> 153 |   Diseases_during_pregnancy: "Diseases during pregnancy",
+      |                            ^
+  154 |
+  155 |   Feeling_about_motherhood: "Feeling about motherhood",
+  156 |   Recieved_Support: "Recieved Support",
+
+Expected ';', '}' or <eof>
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:05:56.956] Server  LOG      ✓ Compiled in 176ms
+[00:06:15.821] Server  LOG      ✓ Compiled in 118ms
+[00:06:30.667] Server  LOG      ✓ Compiled in 99ms
+[00:07:03.270] Server  LOG      ✓ Compiled in 96ms
+[00:07:28.887] Server  LOG      ✓ Compiled in 170ms
+[00:07:29.029] Browser ERROR   uncaughtError: ReferenceError: SelectNew is not defined
+[00:08:09.440] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:08:09.446] Server  LOG      ✓ Compiled in 176ms
+[00:08:09.634] Server  ERROR   D:\CSE445\Mind_Bloom-main\mindBloom\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__ce6aa389._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:09.639] Server  ERROR    ⨯ ReferenceError: SelectNew is not defined
+[00:08:09.657] Browser ERROR   uncaughtError: ReferenceError: SelectNew is not defined
+[00:08:09.875] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:10.108] Browser ERROR   uncaughtError: ReferenceError: SelectNew is not defined
+[00:08:54.720] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:08:54.735] Server  LOG      ✓ Compiled in 75ms
+[00:08:54.864] Server  ERROR   D:\CSE445\Mind_Bloom-main\mindBloom\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__ce6aa389._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:54.865] Server  ERROR    ⨯ ReferenceError: SelectNew is not defined
+[00:08:54.883] Browser ERROR   unhandledRejection: Error: No link element found for chunk /_next/static/chunks/%5Broot-of-the-server%5D__28bc9c2a._.css
+[00:08:55.074] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:55.248] Browser ERROR   uncaughtError: ReferenceError: SelectNew is not defined
+[00:09:42.591] Server  LOG      ✓ Compiled in 58ms
+[00:09:42.592] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:09:42.710] Server  ERROR   D:\CSE445\Mind_Bloom-main\mindBloom\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__ce6aa389._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:09:42.711] Server  ERROR    ⨯ ReferenceError: SelectNew is not defined
+[00:09:43.001] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:09:43.203] Browser ERROR   uncaughtError: ReferenceError: SelectNew is not defined
+[00:10:17.469] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:10:17.487] Server  LOG      ✓ Compiled in 104ms
+[00:10:17.576] Browser ERROR   unhandledRejection: Error: No link element found for chunk /_next/static/chunks/%5Broot-of-the-server%5D__28bc9c2a._.css
+[00:10:17.792] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:22:28.249] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:47:10.819] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:51:25.475] Server  LOG      ✓ Compiled in 161ms
+[00:51:45.211] Server  LOG      ✓ Compiled in 121ms
+[00:52:08.373] Server  LOG      ✓ Compiled in 74ms
+[00:52:26.604] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:53:22.348] Server  LOG      ✓ Compiled in 81ms

@@ -1,27 +1,42 @@
+import os
+from typing import Any, Dict, Optional
+
+import joblib
+import pandas as pd
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
-from typing import Any, Dict, Optional
-import joblib
-import pandas as pd
 
 app = FastAPI(title="PPD Predictor API", version="1.0")
 
-# CORS: allow your Next.js frontend
+# CORS: allow your Next.js frontend (configure via FRONTEND_ORIGIN env, comma-separated)
+ALLOWED_ORIGINS = os.getenv("FRONTEND_ORIGIN", "*").split(",")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # for deploy, replace with your Vercel domain
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Load model (your saved deployable pipeline)
-MODEL_PATH = "model.joblib"
+# ============================================================================
+# NOTEBOOK ARTIFACT LOADING (once at startup)
+# ============================================================================
+# AUTHORITATIVE NOTEBOOK SOURCE:
+# D:\CSE445\Mind_Bloom-main\mindBloom\version-abrar-grp-assign (Update with ensemble model) - ABRARCopy.ipynb
+#
+# Model is created via: python create_ensemble_model.py
+# which loads training data from notebook outputs and creates an ensemble VotingClassifier
+#
+# Model path can be configured via MODEL_PATH env var
+# Default: local model.joblib (created from notebook)
+MODEL_PATH = os.getenv("MODEL_PATH", "model.joblib")
+
 try:
     model = joblib.load(MODEL_PATH)
+    print(f"[STARTUP] Model loaded successfully from: {MODEL_PATH}")
 except Exception as e:
-    raise RuntimeError(f"Failed to load {MODEL_PATH}: {e}")
+    raise RuntimeError(f"Failed to load model from {MODEL_PATH}: {e}")
 
 # Frontend keys -> Dataset / model column names (with spaces)
 KEY_MAP: Dict[str, str] = {
@@ -99,6 +114,147 @@ def health():
     return {"ok": True}
 
 
+# ============================================================================
+# FEEDBACK ENDPOINTS FOR INCREMENTAL LEARNING
+# ============================================================================
+class FeedbackRequest(BaseModel):
+    session_id: str
+    actual_outcome: str  # "high", "medium", "low" or clinical notes
+    feedback_notes: Optional[str] = None
+
+
+@app.post("/feedback")
+def submit_feedback(req: FeedbackRequest):
+    """
+    Collect user feedback on prediction accuracy.
+    This is CRITICAL for supervised incremental learning.
+    """
+    if os.getenv("COLLECT_DATA", "true").lower() != "true":
+        return {"status": "data_collection_disabled"}
+    
+    try:
+        from data_collector import log_user_feedback
+        log_user_feedback(req.session_id, req.actual_outcome, req.feedback_notes)
+        return {"status": "success", "message": "Feedback recorded"}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
+
+
+@app.get("/data-stats")
+def get_data_stats():
+    """Get statistics about collected data (for admin dashboard)."""
+    try:
+        from data_collector import get_data_stats
+        return get_data_stats()
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/minimal-schema")
+def get_minimal_schema():
+    """
+    Get the schema for minimal questionnaire.
+    Frontend uses this to build the form dynamically.
+    """
+    try:
+        from feature_derivation import get_minimal_input_schema
+        return get_minimal_input_schema()
+    except Exception as e:
+        return {"error": str(e)}
+
+
+# ============================================================================
+# MINIMAL QUESTIONNAIRE PREDICTION (18-22 questions -> 53 features)
+# ============================================================================
+@app.post("/predict-minimal")
+def predict_minimal(req: PredictRequest):
+    """
+    NEW: Accepts minimal user inputs (18-22 questions) and auto-computes
+    all 53 features needed by the model.
+    
+    This dramatically improves UX while maintaining accuracy.
+    """
+    from feature_derivation import derive_all_features
+    
+    # Accept flat payload or {answers:{...}}
+    if req.answers is not None:
+        incoming = req.answers
+    else:
+        incoming = req.model_dump()
+        incoming.pop("answers", None)
+    
+    # Clean values
+    incoming = {k: _clean_value(v) for k, v in incoming.items()}
+    
+    # Basic validation
+    if "age" not in incoming and "Age" not in incoming:
+        raise HTTPException(status_code=422, detail="Missing required field: age")
+    
+    # Normalize age key
+    if "Age" in incoming and "age" not in incoming:
+        incoming["age"] = incoming["Age"]
+    
+    # Derive all 53 features from minimal inputs
+    try:
+        derived_features = derive_all_features(incoming)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Feature derivation failed: {e}")
+    
+    # Build DataFrame for model
+    expected_cols = getattr(model, "feature_names_in_", None)
+    
+    if expected_cols is not None:
+        df = pd.DataFrame([{col: derived_features.get(col) for col in expected_cols}])
+    else:
+        df = pd.DataFrame([derived_features])
+    
+    # Clean string columns
+    for c in df.columns:
+        if df[c].dtype == object:
+            df[c] = df[c].astype(str).str.strip().str.lower()
+            df[c] = df[c].replace({"nan": None, "none": None, "": None})
+    
+    try:
+        pred_idx = model.predict(df)[0]
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Prediction failed: {e}")
+    
+    # Convert prediction index to class label (e.g., 1 -> 'low')
+    classes = list(getattr(model, "classes_", ["high", "low", "medium"]))
+    risk_label = str(classes[pred_idx]) if pred_idx < len(classes) else str(pred_idx)
+    
+    probabilities = None
+    if hasattr(model, "predict_proba"):
+        try:
+            probs = model.predict_proba(df)[0]
+            if classes and len(classes) == len(probs):
+                probabilities = {str(classes[i]): float(probs[i]) for i in range(len(classes))}
+        except Exception:
+            probabilities = None
+    
+    # Data collection
+    if os.getenv("COLLECT_DATA", "true").lower() == "true":
+        try:
+            from data_collector import log_prediction
+            log_prediction(derived_features, risk_label, probabilities)
+        except Exception as e:
+            print(f"[WARN] Data collection failed (non-critical): {e}")
+    
+    # Include derived risk scores in response for transparency
+    risk_indicators = {
+        "social_support_index": derived_features.get("social_support_index"),
+        "pregnancy_stress_score": derived_features.get("pregnancy_stress_score"),
+        "cumulative_risk_score": derived_features.get("cumulative_risk_score"),
+    }
+    
+    return {
+        "risk_level": risk_label,
+        "probabilities": probabilities,
+        "risk_indicators": risk_indicators,
+        "features_computed": len(derived_features),
+    }
+
+
 @app.post("/predict")
 def predict(req: PredictRequest):
     # Accept flat payload or {answers:{...}}
@@ -136,21 +292,35 @@ def predict(req: PredictRequest):
 
 
     try:
-        pred = model.predict(df)[0]
+        pred_idx = model.predict(df)[0]
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Prediction failed: {e}")
+
+    # Convert prediction index to class label (e.g., 1 -> 'low')
+    classes = list(getattr(model, "classes_", ["high", "low", "medium"]))
+    risk_label = str(classes[pred_idx]) if pred_idx < len(classes) else str(pred_idx)
 
     probabilities = None
     if hasattr(model, "predict_proba"):
         try:
             probs = model.predict_proba(df)[0]
-            classes = list(getattr(model, "classes_", []))
             if classes and len(classes) == len(probs):
                 probabilities = {str(classes[i]): float(probs[i]) for i in range(len(classes))}
         except Exception:
             probabilities = None
 
+    # ========================================================================
+    # DATA COLLECTION FOR INCREMENTAL LEARNING (optional, non-blocking)
+    # ========================================================================
+    if os.getenv("COLLECT_DATA", "true").lower() == "true":
+        try:
+            from data_collector import log_prediction
+            log_prediction(mapped, risk_label, probabilities)
+        except Exception as e:
+            # Don't fail prediction if logging fails
+            print(f"[WARN] Data collection failed (non-critical): {e}")
+
     return {
-        "risk_level": str(pred),
+        "risk_level": risk_label,
         "probabilities": probabilities,
     }
