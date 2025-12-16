@@ -4,3 +4,5 @@ scikit-learn
 pandas
 numpy
 joblib
+
+apscheduler==3.10.4
