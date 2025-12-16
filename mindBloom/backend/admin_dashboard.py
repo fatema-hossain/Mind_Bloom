@@ -441,4 +441,8 @@ def get_admin_dashboard() -> str:
     </html>
     """
     
+
     return html_content
+
+
+# http://127.0.0.1:8000/admin/dashboard
