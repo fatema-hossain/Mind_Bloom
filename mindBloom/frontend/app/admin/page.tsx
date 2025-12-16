@@ -151,15 +151,20 @@ export default function AdminPage() {
               🌸
             </div>
             <h1 className="text-3xl sm:text-4xl font-black mb-2 px-2" style={{ 
-              fontFamily: '"League Spartan", sans-serif',
-              letterSpacing: '0.08em',
-              backgroundImage: 'linear-gradient(180deg, #d896e8 0%, #ff69d9 50%, #4d0048 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.4))',
-              WebkitFilter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.4))'
-            }}>
+                fontFamily: '"sans-serif", sans-serif',
+                letterSpacing: '0.05em',
+                backgroundImage: 'linear-gradient(180deg, #f7f7f7ff 0%, #eca8dbff 50%, #bdbdbdff 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontWeight : 'bold',
+                //borderRadius: '.9rem',
+                //border: '2px solid rgba(255, 122, 184, 0.3)',
+                //padding: '0.1rem 0.9rem',
+                WebkitTextStroke: '1px rgba(205, 25, 25, 0.1)',
+                filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.4))',
+                WebkitFilter: 'drop-shadow(1px 1px 1px rgba(0,0,0,0.4))'
+              }}>
               Admin Dashboard
             </h1>
             <p className="text-slate-700 text-sm sm:text-base">Manage model performance and training data</p>

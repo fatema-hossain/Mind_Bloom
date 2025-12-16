@@ -281,17 +281,20 @@ export default function AssessmentPage() {
             
             {/* Brand Title */}
             <h2 className="text-center text-2xl sm:text-3xl lg:text-4xl font-black animate-in fade-in zoom-in-50 duration-700 hover:scale-105 transition-all duration-500 cursor-default break-words px-2" style={{ 
-              fontFamily: '"League Spartan", sans-serif',
-              letterSpacing: '0.08em',
-              backgroundImage: 'linear-gradient(180deg, #d896e8 0%, #ff69d9 50%, #4d0048 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.4))',
-              WebkitFilter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.4))',
-              wordBreak: 'break-word',
-              hyphens: 'auto'
-            }} aria-label="Mind-Bloom - PPD Risk Assessment Platform">
+                fontFamily: '"sans-serif", sans-serif',
+                letterSpacing: '0.05em',
+                backgroundImage: 'linear-gradient(180deg, #f7f7f7ff 0%, #eca8dbff 50%, #bdbdbdff 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontWeight : 'bold',
+                //borderRadius: '.9rem',
+                //border: '2px solid rgba(255, 122, 184, 0.3)',
+                //padding: '0.1rem 0.9rem',
+                WebkitTextStroke: '1px rgba(205, 25, 25, 0.1)',
+                filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.4))',
+                WebkitFilter: 'drop-shadow(1px 1px 1px rgba(0,0,0,0.4))'
+              }} aria-label="Mind-Bloom - PPD Risk Assessment Platform">
               MIND BLOOM
             </h2>
             
