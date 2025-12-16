@@ -1,4 +1,5 @@
 import os
+import uuid
 from typing import Any, Dict, Optional
 
 import joblib
@@ -7,7 +8,22 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
+from fastapi.responses import HTMLResponse
+from admin_dashboard import get_admin_dashboard
+
+# Import new online learning modules
+from database import init_db, save_prediction, save_feedback, schedule_follow_up, get_statistics
+from scheduler import start_scheduler
+
 app = FastAPI(title="PPD Predictor API", version="1.0")
+# Initialize database and scheduler on startup
+@app.on_event("startup")
+async def startup_event():
+    """Initialize database and background scheduler on app startup."""
+    init_db()
+    start_scheduler()
+    print("✅ Database initialized")
+    print("✅ Background scheduler started")
 
 # CORS: allow your Next.js frontend (configure via FRONTEND_ORIGIN env, comma-separated)
 ALLOWED_ORIGINS = os.getenv("FRONTEND_ORIGIN", "*").split(",")
@@ -324,3 +340,126 @@ def predict(req: PredictRequest):
         "risk_level": risk_label,
         "probabilities": probabilities,
     }
+
+
+# ============================================================================
+# NEW ENDPOINTS FOR ONLINE LEARNING
+# ============================================================================
+
+class PredictionWithContactRequest(BaseModel):
+    """Extended prediction request with contact info for follow-ups."""
+    answers: Dict[str, Any]
+    user_email: Optional[str] = None
+    user_phone: Optional[str] = None
+
+
+class FeedbackRequest(BaseModel):
+    """Feedback submission for model improvement."""
+    session_id: str
+    actual_outcome: str  # "high", "medium", "low"
+    feedback_notes: Optional[str] = None
+    clinician_validated: bool = False
+    confidence_score: Optional[float] = None
+
+
+@app.post("/predict-with-tracking")
+def predict_with_tracking(req: PredictionWithContactRequest):
+    """
+    Make prediction AND save to database for online learning.
+    Returns session_id for future follow-up.
+    """
+    session_id = str(uuid.uuid4())
+    
+    try:
+        # YOUR EXISTING PREDICTION LOGIC HERE
+        # (Copy from your existing /predict endpoint)
+        # For now, placeholder:
+        
+        prediction = "high"  # Replace with your model prediction
+        probabilities = {"high": 0.7, "medium": 0.2, "low": 0.1}
+        confidence = 0.7
+        
+        # Save to database
+        save_prediction(
+            session_id=session_id,
+            user_email=req.user_email,
+            user_phone=req.user_phone,
+            input_features=req.answers,
+            predicted_label=prediction,
+            probabilities=probabilities,
+            confidence=confidence
+        )
+        
+        # Schedule follow-up (6 weeks later)
+        schedule_follow_up(
+            session_id=session_id,
+            days_from_now=42,
+            method="email" if req.user_email else "sms"
+        )
+        
+        return {
+            "session_id": session_id,
+            "prediction": prediction,
+            "probabilities": probabilities,
+            "confidence": confidence,
+            "follow_up_scheduled": True,
+            "follow_up_date": "6 weeks from now"
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/feedback")
+def submit_feedback(req: FeedbackRequest):
+    """
+    Submit actual outcome for a previous prediction.
+    This is CRITICAL for online learning!
+    """
+    success = save_feedback(
+        session_id=req.session_id,
+        actual_outcome=req.actual_outcome,
+        feedback_notes=req.feedback_notes,
+        clinician_validated=req.clinician_validated,
+        confidence_score=req.confidence_score
+    )
+    
+    if success:
+        return {
+            "status": "success",
+            "message": "Feedback recorded. Thank you! ",
+            "session_id":  req.session_id
+        }
+    else:
+        raise HTTPException(status_code=400, detail="Failed to save feedback")
+
+
+@app.get("/statistics")
+def get_collection_statistics():
+    """Get data collection statistics."""
+    stats = get_statistics()
+    return {
+        "data_collection_stats": stats,
+        "message": "Online learning data accumulating...",
+        "next_retraining": "Weekly on Sundays at 2:00 AM"
+    }
+
+
+@app.get("/health")
+def health_check():
+    """Health check endpoint with data stats."""
+    stats = get_statistics()
+    return {
+        "status": "healthy",
+        "predictions": stats["total_predictions"],
+        "feedback":  stats["total_feedback"],
+        "feedback_rate": f"{stats['feedback_rate']}%",
+        "scheduler": "active"
+    }
+# ============================================================================
+# ADMIN DASHBOARD
+# ============================================================================
+
+@app.get("/admin/dashboard", response_class=HTMLResponse)
+def admin_dashboard():
+    """Admin dashboard for monitoring online learning."""
+    return get_admin_dashboard()
