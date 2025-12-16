@@ -47,7 +47,7 @@ def send_follow_up_reminders():
             elif method == "sms":
                 send_sms_reminder(session_id, followup)
             
-            logger.info(f"✅ Reminder sent for session {session_id}")
+            logger.info(f"[OK] Reminder sent for session {session_id}")
     except Exception as e:
         logger. error(f"Error in send_follow_up_reminders: {e}")
 
@@ -58,7 +58,7 @@ def send_email_reminder(session_id: str, followup: dict):
     For production: use Mailgun FREE tier (free for 1000 emails/month)
     Or use SMTP with Gmail (needs 2FA app password - still free)
     """
-    logger.info(f"📧 Email reminder scheduled for session {session_id}")
+    logger.info(f"[EMAIL] Reminder scheduled for session {session_id}")
     # TODO: Integrate with free email service (Mailgun, SendGrid, etc.)
 
 
@@ -67,7 +67,7 @@ def send_sms_reminder(session_id: str, followup: dict):
     Send SMS reminder (using free services).
     For production: use Twilio free trial or Vonage SMS free credits
     """
-    logger.info(f"📱 SMS reminder scheduled for session {session_id}")
+    logger.info(f"[SMS] Reminder scheduled for session {session_id}")
     # TODO: Integrate with free SMS service (Twilio, Vonage, etc.)
 
 
@@ -76,7 +76,7 @@ def retrain_model_batch():
     Weekly batch retraining with new feedback data.
     Uses existing retrain_model.py
     """
-    logger.info("🔄 Starting weekly model retraining...")
+    logger.info("[RETRAIN] Starting weekly model retraining...")
     
     try:
         # Export new labeled data
@@ -84,7 +84,7 @@ def retrain_model_batch():
         success = export_for_retraining(str(csv_path))
         
         if not success:
-            logger.warning("⚠️  No new feedback data available for retraining")
+            logger.warning("[WARN] No new feedback data available for retraining")
             return
         
         # Run retraining script if it exists
@@ -98,34 +98,34 @@ def retrain_model_batch():
             )
             
             if result.returncode == 0:
-                logger.info("✅ Model retraining successful!")
+                logger.info("[OK] Model retraining successful!")
                 logger.info(result.stdout)
             else:
-                logger.error("❌ Model retraining failed!")
+                logger.error("[ERROR] Model retraining failed!")
                 logger.error(result.stderr)
         else:
-            logger.warning(f"⚠️  retrain_model_v2.py not found at {retrain_script}")
+            logger.warning(f"[WARN] retrain_model_v2.py not found at {retrain_script}")
     
     except Exception as e:
-        logger.error(f"❌ Retraining error: {e}")
+        logger.error(f"[ERROR] Retraining error: {e}")
 
 
 def monitor_data_quality():
     """Monitor for data drift and quality issues."""
-    logger.info("📊 Checking data quality...")
+    logger.info("[QUALITY] Checking data quality...")
     
     try:
         stats = get_statistics()
         
-        logger.info(f"📈 Predictions: {stats['total_predictions']}, "
+        logger.info(f"[STATS] Predictions: {stats['total_predictions']}, "
                    f"Feedback: {stats['total_feedback']}, "
                    f"Rate: {stats['feedback_rate']}%")
         
         if stats['feedback_rate'] < 10 and stats['total_predictions'] > 5:
-            logger.warning("⚠️  Low feedback rate! Consider more follow-up outreach.")
+            logger.warning("[WARN] Low feedback rate! Consider more follow-up outreach.")
         
         if stats['total_feedback'] >= 20:
-            logger.info("✅ Enough labeled data for model retraining!")
+            logger.info("[OK] Enough labeled data for model retraining!")
     
     except Exception as e: 
         logger.error(f"Error in monitor_data_quality: {e}")
@@ -163,10 +163,10 @@ def start_scheduler():
     )
     
     scheduler.start()
-    logger.info("✅ Background scheduler started!")
-    logger.info("   📅 Daily follow-ups: 8:00 AM")
-    logger.info("   📊 Data quality check: 9:00 AM")
-    logger.info("   🔄 Weekly retraining: Sundays at 2:00 AM")
+    logger.info("[OK] Background scheduler started!")
+    logger.info("   - Daily follow-ups: 8:00 AM")
+    logger.info("   - Data quality check: 9:00 AM")
+    logger.info("   - Weekly retraining: Sundays at 2:00 AM")
     
     return scheduler
 

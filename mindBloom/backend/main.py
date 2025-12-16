@@ -22,8 +22,8 @@ async def startup_event():
     """Initialize database and background scheduler on app startup."""
     init_db()
     start_scheduler()
-    print("✅ Database initialized")
-    print("✅ Background scheduler started")
+    print("[OK] Database initialized")
+    print("[OK] Background scheduler started")
 
 # CORS: allow your Next.js frontend (configure via FRONTEND_ORIGIN env, comma-separated)
 ALLOWED_ORIGINS = os.getenv("FRONTEND_ORIGIN", "*").split(",")

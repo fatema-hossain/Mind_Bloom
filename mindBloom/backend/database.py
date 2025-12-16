@@ -136,7 +136,7 @@ def init_db():
     
     conn.commit()
     conn.close()
-    print("✅ Database initialized successfully!")
+    print("[OK] Database initialized successfully!")
 
 
 def save_prediction(
@@ -316,10 +316,10 @@ def export_for_retraining(output_path: str = "retraining_data.csv") -> bool:
         
         df = pd.DataFrame(data)
         df.to_csv(output_path, index=False)
-        print(f"✅ Exported {len(df)} labeled samples to {output_path}")
+        print(f"[OK] Exported {len(df)} labeled samples to {output_path}")
         return True
     except Exception as e:
-        print(f"❌ Error exporting data: {e}")
+        print(f"[ERROR] Error exporting data: {e}")
         return False
 
 

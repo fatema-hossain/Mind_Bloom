@@ -15,11 +15,12 @@ __turbopack_context__.n(__turbopack_context__.i("[project]/app/layout.tsx [app-r
 }),
 "[project]/app/page.tsx [app-rsc] (ecmascript)", ((__turbopack_context__, module, exports) => {
 
+const e = new Error("Could not parse module '[project]/app/page.tsx'\n\nExpected ',', got '{'");
+e.code = 'MODULE_UNPARSABLE';
+throw e;
 }),
 "[project]/app/page.tsx [app-rsc] (ecmascript, Next.js Server Component)", ((__turbopack_context__) => {
 
 __turbopack_context__.n(__turbopack_context__.i("[project]/app/page.tsx [app-rsc] (ecmascript)"));
 }),
 ];
-
-//# sourceMappingURL=%5Broot-of-the-server%5D__1222724e._.js.map
