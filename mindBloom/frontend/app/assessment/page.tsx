@@ -205,6 +205,15 @@ export default function AssessmentPage() {
 
       const data = await response.json();
       setPrediction(data);
+      
+      // Store SHAP explanation in localStorage for the report page
+      if (data.shap_explanation) {
+        try {
+          localStorage.setItem("latestShapExplanation", JSON.stringify(data.shap_explanation));
+        } catch (error) {
+          console.error("Failed to store SHAP explanation in localStorage:", error);
+        }
+      }
     } catch {
       setPrediction({ error: "Failed to connect to backend" });
     }
@@ -218,9 +227,11 @@ export default function AssessmentPage() {
   // Generate firefly positions only on client-side to avoid hydration mismatch
   const [fireflies, setFireflies] = useState<Array<{id: number; left: string; top: string; delay: string; duration: string; size: string}>>([]);
   const [stars, setStars] = useState<Array<{id: number; left: string; top: string; delay: string; duration: string}>>([]);
+  const [isClient, setIsClient] = useState(false);
 
-  // Generate fireflies and stars only on client
+  // Generate fireflies and stars only on client after hydration
   useEffect(() => {
+    setIsClient(true);
     setFireflies(Array.from({ length: 25 }, (_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
@@ -242,34 +253,36 @@ export default function AssessmentPage() {
   return (
     <main className="min-h-screen flex flex-col lg:flex-row text-slate-800 p-4 sm:p-6 gap-4 sm:gap-6 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #b8d8f0 0%, #c8c8f5 50%, #f0c8e8 100%)' }} role="main">
       {/* Starry Firefly Background */}
-      <div className="fireflies-container" aria-hidden="true">
-        {fireflies.map((f) => (
-          <div
-            key={`firefly-${f.id}`}
-            className="firefly"
-            style={{
-              left: f.left,
-              top: f.top,
-              animationDelay: f.delay,
-              animationDuration: f.duration,
-              width: f.size,
-              height: f.size,
-            }}
-          />
-        ))}
-        {stars.map((s) => (
-          <div
-            key={`star-${s.id}`}
-            className="star"
-            style={{
-              left: s.left,
-              top: s.top,
-              animationDelay: s.delay,
-              animationDuration: s.duration,
-            }}
-          />
-        ))}
-      </div>
+      {isClient && (
+        <div className="fireflies-container" aria-hidden="true">
+          {fireflies.map((f) => (
+            <div
+              key={`firefly-${f.id}`}
+              className="firefly"
+              style={{
+                left: f.left,
+                top: f.top,
+                animationDelay: f.delay,
+                animationDuration: f.duration,
+                width: f.size,
+                height: f.size,
+              }}
+            />
+          ))}
+          {stars.map((s) => (
+            <div
+              key={`star-${s.id}`}
+              className="star"
+              style={{
+                left: s.left,
+                top: s.top,
+                animationDelay: s.delay,
+                animationDuration: s.duration,
+              }}
+            />
+          ))}
+        </div>
+      )}
       {/* SIDEBAR */}
       <aside className="relative z-10 w-full lg:w-72 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-blue-100/90 via-purple-50/80 to-pink-100/90 backdrop-blur-2xl border border-blue-200/60 shadow-2xl animate-in fade-in slide-in-from-left-4 duration-700" role="navigation" aria-label="Assessment steps navigation">
         <div className="mb-8 sm:mb-10 p-5 sm:p-6 bg-gradient-to-br from-blue-100/80 via-purple-100/70 to-pink-100/80 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-blue-200/60 hover:border-purple-300/70 group">

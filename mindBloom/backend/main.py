@@ -14,6 +14,7 @@ from admin_dashboard import get_admin_dashboard
 # Import new online learning modules
 from database import init_db, save_prediction, save_feedback, schedule_follow_up, get_statistics
 from scheduler import start_scheduler
+from shap_explainer import initialize_shap_explainer, get_shap_values, get_risk_factors_summary
 
 app = FastAPI(title="PPD Predictor API", version="1.0")
 # Initialize database and scheduler on startup
@@ -22,6 +23,14 @@ async def startup_event():
     """Initialize database and background scheduler on app startup."""
     init_db()
     start_scheduler()
+    
+    # Initialize SHAP explainer
+    try:
+        initialize_shap_explainer(model)
+        print("[OK] SHAP explainer initialized")
+    except Exception as e:
+        print(f"[WARN] SHAP initialization failed (non-critical): {e}")
+    
     print("[OK] Database initialized")
     print("[OK] Background scheduler started")
 
@@ -263,11 +272,27 @@ def predict_minimal(req: PredictRequest):
         "cumulative_risk_score": derived_features.get("cumulative_risk_score"),
     }
     
+    # Generate SHAP values for model interpretability
+    shap_explanation = None
+    try:
+        shap_result = get_shap_values(df, top_k=10)
+        if shap_result.get("success"):
+            risk_factors = get_risk_factors_summary(shap_result)
+            shap_explanation = {
+                "top_features": shap_result.get("top_features", []),
+                "risk_factors": risk_factors,
+                "base_value": shap_result.get("base_value"),
+                "total_features_analyzed": shap_result.get("total_features_analyzed"),
+            }
+    except Exception as e:
+        print(f"[WARN] SHAP explanation failed (non-critical): {e}")
+    
     return {
         "risk_level": risk_label,
         "probabilities": probabilities,
         "risk_indicators": risk_indicators,
         "features_computed": len(derived_features),
+        "shap_explanation": shap_explanation,
     }
 
 

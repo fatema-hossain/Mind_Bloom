@@ -15,9 +15,28 @@ interface StatisticsData {
   message?: string;
 }
 
+interface ShapFeature {
+  feature: string;
+  shap_value: number;
+  feature_value: number | string;
+  abs_shap_value: number;
+  impact: "increases_risk" | "decreases_risk" | "neutral";
+}
+
+interface ShapExplanation {
+  top_features?: ShapFeature[];
+  risk_factors?: {
+    increasing_risk: string[];
+    decreasing_risk: string[];
+  };
+  base_value?: number;
+  total_features_analyzed?: number;
+}
+
 export default function ReportPage() {
   const [stats, setStats] = useState<StatisticsData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [latestShapExplanation, setLatestShapExplanation] = useState<ShapExplanation | null>(null);
 
   const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
 
@@ -34,6 +53,16 @@ export default function ReportPage() {
         setLoading(false);
       }
     };
+
+    // Load latest SHAP explanation from localStorage (stored from assessment)
+    try {
+      const storedShap = localStorage.getItem("latestShapExplanation");
+      if (storedShap) {
+        setLatestShapExplanation(JSON.parse(storedShap));
+      }
+    } catch (error) {
+      console.error("Failed to load SHAP explanation from localStorage:", error);
+    }
 
     fetchStats();
     // Refresh stats every 30 seconds
@@ -349,6 +378,125 @@ export default function ReportPage() {
                 </div>
               </div>
             </section>
+
+            {/* SHAP Feature Importance */}
+            {latestShapExplanation && latestShapExplanation.top_features && (
+              <section className="mb-12 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-indigo-50/90 via-purple-50/80 to-violet-50/90 backdrop-blur-2xl border border-indigo-200/60 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-700">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-10 h-10 rounded-lg bg-indigo-100 flex items-center justify-center border border-indigo-300">
+                    <svg className="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5a4 4 0 100-8 4 4 0 000 8z" />
+                    </svg>
+                  </div>
+                  <h2 className="text-3xl font-bold text-slate-800">SHAP Feature Importance</h2>
+                </div>
+
+                <p className="text-slate-700 mb-6 text-sm">
+                  Understanding which factors most influenced the latest assessment result. SHAP values show how each feature pushed the prediction towards higher or lower risk.
+                </p>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+                  {/* Top Features Contributing to Risk */}
+                  <div className="p-6 bg-white/70 rounded-2xl border-2 border-indigo-200 shadow-lg">
+                    <h3 className="font-bold text-indigo-700 mb-4 flex items-center gap-2">
+                      <span className="inline-block w-3 h-3 bg-red-500 rounded-full"></span>
+                      Risk Increasing Factors
+                    </h3>
+                    <div className="space-y-3">
+                      {latestShapExplanation.top_features
+                        .filter(f => f.impact === "increases_risk")
+                        .slice(0, 5)
+                        .map((feature, idx) => (
+                          <div key={`risk-increasing-${idx}`} className="p-3 bg-red-50 rounded-lg border border-red-200">
+                            <div className="flex items-center justify-between mb-1">
+                              <p className="font-semibold text-red-900 text-sm">{feature.feature.replace(/_/g, " ").toUpperCase()}</p>
+                              <span className="text-xs font-bold text-red-600">{Math.abs(feature.shap_value).toFixed(3)}</span>
+                            </div>
+                            <p className="text-xs text-red-700">
+                              Current value: <span className="font-semibold">{typeof feature.feature_value === "number" ? feature.feature_value.toFixed(2) : feature.feature_value}</span>
+                            </p>
+                            <div className="w-full h-1.5 bg-red-200 rounded-full overflow-hidden mt-2">
+                              <div
+                                className="h-full bg-gradient-to-r from-red-400 to-red-600"
+                                style={{ width: `${Math.min(Math.abs(feature.shap_value) * 100, 100)}%` }}
+                              />
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+
+                  {/* Top Features Protecting from Risk */}
+                  <div className="p-6 bg-white/70 rounded-2xl border-2 border-green-200 shadow-lg">
+                    <h3 className="font-bold text-green-700 mb-4 flex items-center gap-2">
+                      <span className="inline-block w-3 h-3 bg-green-500 rounded-full"></span>
+                      Protective Factors
+                    </h3>
+                    <div className="space-y-3">
+                      {latestShapExplanation.top_features
+                        .filter(f => f.impact === "decreases_risk")
+                        .slice(0, 5)
+                        .map((feature, idx) => (
+                          <div key={`risk-decreasing-${idx}`} className="p-3 bg-green-50 rounded-lg border border-green-200">
+                            <div className="flex items-center justify-between mb-1">
+                              <p className="font-semibold text-green-900 text-sm">{feature.feature.replace(/_/g, " ").toUpperCase()}</p>
+                              <span className="text-xs font-bold text-green-600">{Math.abs(feature.shap_value).toFixed(3)}</span>
+                            </div>
+                            <p className="text-xs text-green-700">
+                              Current value: <span className="font-semibold">{typeof feature.feature_value === "number" ? feature.feature_value.toFixed(2) : feature.feature_value}</span>
+                            </p>
+                            <div className="w-full h-1.5 bg-green-200 rounded-full overflow-hidden mt-2">
+                              <div
+                                className="h-full bg-gradient-to-r from-green-400 to-green-600"
+                                style={{ width: `${Math.min(Math.abs(feature.shap_value) * 100, 100)}%` }}
+                              />
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Risk Factors Summary */}
+                {latestShapExplanation.risk_factors && (
+                  <div className="p-6 bg-white/80 rounded-2xl border-2 border-purple-300">
+                    <h3 className="font-bold text-purple-800 mb-4">📊 Assessment Summary</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {latestShapExplanation.risk_factors.increasing_risk.length > 0 && (
+                        <div>
+                          <p className="text-xs font-semibold text-slate-600 mb-2 uppercase">Contributing to Higher Risk:</p>
+                          <ul className="space-y-1">
+                            {latestShapExplanation.risk_factors.increasing_risk.slice(0, 5).map((factor, idx) => (
+                              <li key={`summary-increasing-${idx}`} className="text-sm text-red-700 flex items-center gap-2">
+                                <span className="text-red-500">▸</span> {factor}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                      {latestShapExplanation.risk_factors.decreasing_risk.length > 0 && (
+                        <div>
+                          <p className="text-xs font-semibold text-slate-600 mb-2 uppercase">Contributing to Lower Risk:</p>
+                          <ul className="space-y-1">
+                            {latestShapExplanation.risk_factors.decreasing_risk.slice(0, 5).map((factor, idx) => (
+                              <li key={`summary-decreasing-${idx}`} className="text-sm text-green-700 flex items-center gap-2">
+                                <span className="text-green-500">▸</span> {factor}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                <div className="mt-4 p-4 bg-indigo-50 border border-indigo-300 rounded-lg">
+                  <p className="text-xs text-indigo-700">
+                    <span className="font-semibold">ℹ️ How to read:</span> SHAP values show how much each factor influences the model's decision. Higher absolute values indicate stronger influence. Red factors push toward higher risk, green factors push toward lower risk.
+                  </p>
+                </div>
+              </section>
+            )}
 
             {/* Online Learning */}
             <section className="mb-12 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-purple-50/90 via-pink-50/85 to-blue-50/85 backdrop-blur-2xl border border-purple-200/60 shadow-2xl animate-in fade-in slide-in-from-left-4 duration-700 delay-300">

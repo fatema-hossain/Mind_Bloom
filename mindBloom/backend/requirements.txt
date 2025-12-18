@@ -4,5 +4,6 @@ scikit-learn
 pandas
 numpy
 joblib
+shap
 
 apscheduler==3.10.4
