@@ -196,6 +196,73 @@ def get_data_stats() -> Dict[str, Any]:
     return stats
 
 
+def get_statistics_from_csv() -> Dict[str, Any]:
+    """
+    Get comprehensive statistics from the CSV predictions log.
+    Returns total predictions, risk distribution, and feedback rate.
+    """
+    import pandas as pd
+    
+    stats = {
+        "total_predictions": 0,
+        "total_feedback": 0,
+        "feedback_rate": 0.0,
+        "risk_distribution": {
+            "high": 0,
+            "medium": 0,
+            "low": 0
+        }
+    }
+    
+    if not PREDICTIONS_LOG.exists():
+        return stats
+    
+    try:
+        df = pd.read_csv(PREDICTIONS_LOG)
+        stats["total_predictions"] = len(df)
+        
+        # Count risk distribution
+        if "prediction" in df.columns:
+            prediction_counts = df["prediction"].str.lower().value_counts()
+            stats["risk_distribution"]["high"] = int(prediction_counts.get("high", 0))
+            stats["risk_distribution"]["medium"] = int(prediction_counts.get("medium", 0))
+            stats["risk_distribution"]["low"] = int(prediction_counts.get("low", 0))
+        
+        # Count feedback
+        if FEEDBACK_LOG.exists():
+            feedback_df = pd.read_csv(FEEDBACK_LOG)
+            stats["total_feedback"] = len(feedback_df)
+        
+        # Calculate feedback rate
+        if stats["total_predictions"] > 0:
+            stats["feedback_rate"] = round(
+                (stats["total_feedback"] / stats["total_predictions"]) * 100, 2
+            )
+    except Exception as e:
+        print(f"[WARN] Error reading CSV stats: {e}")
+    
+    return stats
+
+
+def get_recent_predictions(limit: int = 10) -> list:
+    """
+    Get the most recent predictions from CSV for display.
+    """
+    import pandas as pd
+    
+    if not PREDICTIONS_LOG.exists():
+        return []
+    
+    try:
+        df = pd.read_csv(PREDICTIONS_LOG)
+        # Get last N rows and convert to list of dicts
+        recent = df.tail(limit).to_dict("records")
+        return list(reversed(recent))  # Most recent first
+    except Exception as e:
+        print(f"[WARN] Error reading recent predictions: {e}")
+        return []
+
+
 if __name__ == "__main__":
     # Test the data collector
     print("Data Collection Module")

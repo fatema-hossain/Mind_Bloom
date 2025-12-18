@@ -3,7 +3,7 @@ Automated Scheduler for Follow-ups & Retraining
 ===============================================
 Runs background tasks:
 1. Check for due follow-ups daily
-2. Auto-retrain model weekly with new feedback data
+2. Auto-retrain model with configurable frequency
 3. Monitor data quality
 
 Usage in main.py:
@@ -21,6 +21,7 @@ import logging
 import subprocess
 from pathlib import Path
 import json
+from typing import Optional
 
 from database import get_pending_follow_ups, export_for_retraining, get_statistics
 
@@ -28,6 +29,121 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 BACKEND_DIR = Path(__file__).parent
+CONFIG_FILE = BACKEND_DIR / "scheduler_config.json"
+
+# Global scheduler instance
+_scheduler: Optional[BackgroundScheduler] = None
+_current_schedule = "weekly"  # Default schedule
+
+def get_schedule_config():
+    """Load schedule configuration from file."""
+    global _current_schedule
+    
+    if CONFIG_FILE.exists():
+        try:
+            with open(CONFIG_FILE, "r") as f:
+                config = json.load(f)
+                _current_schedule = config.get("retrain_schedule", "weekly")
+                return config
+        except Exception as e:
+            logger.error(f"Error loading config: {e}")
+    
+    return {
+        "retrain_schedule": "weekly",
+        "last_retrain": None,
+        "last_updated": None
+    }
+
+
+def save_schedule_config(schedule: str):
+    """Save schedule configuration to file."""
+    global _current_schedule
+    _current_schedule = schedule
+    
+    config = {
+        "retrain_schedule": schedule,
+        "last_retrain": None,
+        "last_updated": datetime.now().isoformat()
+    }
+    
+    try:
+        with open(CONFIG_FILE, "w") as f:
+            json.dump(config, f, indent=2)
+        logger.info(f"[CONFIG] Schedule saved: {schedule}")
+        return True
+    except Exception as e:
+        logger.error(f"Error saving config: {e}")
+        return False
+
+
+def update_retrain_schedule(schedule: str) -> dict:
+    """
+    Update the model retraining schedule.
+    
+    Args:
+        schedule: One of "daily", "weekly", "manual"
+    
+    Returns:
+        Dict with status and message
+    """
+    global _scheduler, _current_schedule
+    
+    if schedule not in ["daily", "weekly", "manual"]:
+        return {"success": False, "error": "Invalid schedule. Use: daily, weekly, or manual"}
+    
+    try:
+        # Save configuration
+        save_schedule_config(schedule)
+        
+        # Update scheduler if it exists
+        if _scheduler:
+            # Remove existing retrain job
+            try:
+                _scheduler.remove_job('weekly_retrain')
+            except:
+                pass
+            
+            # Add new job based on schedule
+            if schedule == "daily":
+                _scheduler.add_job(
+                    retrain_model_batch,
+                    CronTrigger(hour=2, minute=0),
+                    id='weekly_retrain',
+                    name='Daily Model Retraining',
+                    replace_existing=True
+                )
+                logger.info("[SCHEDULE] Retraining set to DAILY at 2:00 AM")
+            elif schedule == "weekly":
+                _scheduler.add_job(
+                    retrain_model_batch,
+                    CronTrigger(day_of_week=6, hour=2, minute=0),
+                    id='weekly_retrain',
+                    name='Weekly Model Retraining',
+                    replace_existing=True
+                )
+                logger.info("[SCHEDULE] Retraining set to WEEKLY (Sundays at 2:00 AM)")
+            elif schedule == "manual":
+                logger.info("[SCHEDULE] Retraining set to MANUAL only")
+        
+        return {
+            "success": True,
+            "schedule": schedule,
+            "message": f"Retrain schedule updated to: {schedule}"
+        }
+    
+    except Exception as e:
+        logger.error(f"Error updating schedule: {e}")
+        return {"success": False, "error": str(e)}
+
+
+def get_current_schedule() -> dict:
+    """Get the current retrain schedule configuration."""
+    config = get_schedule_config()
+    return {
+        "schedule": config.get("retrain_schedule", "weekly"),
+        "last_retrain": config.get("last_retrain"),
+        "last_updated": config.get("last_updated")
+    }
 
 
 def send_follow_up_reminders():
@@ -133,10 +249,16 @@ def monitor_data_quality():
 
 def start_scheduler():
     """Start the background scheduler."""
-    scheduler = BackgroundScheduler()
+    global _scheduler
+    
+    _scheduler = BackgroundScheduler()
+    
+    # Load existing config
+    config = get_schedule_config()
+    schedule = config.get("retrain_schedule", "weekly")
     
     # Daily follow-up check (at 8 AM)
-    scheduler.add_job(
+    _scheduler.add_job(
         send_follow_up_reminders,
         CronTrigger(hour=8, minute=0),
         id='daily_followups',
@@ -144,17 +266,30 @@ def start_scheduler():
         replace_existing=True
     )
     
-    # Weekly retraining (Sundays at 2 AM)
-    scheduler.add_job(
-        retrain_model_batch,
-        CronTrigger(day_of_week=6, hour=2, minute=0),
-        id='weekly_retrain',
-        name='Weekly Model Retraining',
-        replace_existing=True
-    )
+    # Model retraining based on configured schedule
+    if schedule == "daily":
+        _scheduler.add_job(
+            retrain_model_batch,
+            CronTrigger(hour=2, minute=0),
+            id='weekly_retrain',
+            name='Daily Model Retraining',
+            replace_existing=True
+        )
+        logger.info("   - Model retraining: DAILY at 2:00 AM")
+    elif schedule == "weekly":
+        _scheduler.add_job(
+            retrain_model_batch,
+            CronTrigger(day_of_week=6, hour=2, minute=0),
+            id='weekly_retrain',
+            name='Weekly Model Retraining',
+            replace_existing=True
+        )
+        logger.info("   - Model retraining: WEEKLY (Sundays at 2:00 AM)")
+    else:
+        logger.info("   - Model retraining: MANUAL only")
     
     # Daily data quality check (at 9 AM)
-    scheduler.add_job(
+    _scheduler.add_job(
         monitor_data_quality,
         CronTrigger(hour=9, minute=0),
         id='daily_quality_check',
@@ -162,13 +297,35 @@ def start_scheduler():
         replace_existing=True
     )
     
-    scheduler.start()
+    _scheduler.start()
     logger.info("[OK] Background scheduler started!")
     logger.info("   - Daily follow-ups: 8:00 AM")
     logger.info("   - Data quality check: 9:00 AM")
-    logger.info("   - Weekly retraining: Sundays at 2:00 AM")
     
-    return scheduler
+    return _scheduler
+
+
+def trigger_manual_retrain() -> dict:
+    """Manually trigger model retraining."""
+    logger.info("[MANUAL] Manual retraining triggered...")
+    
+    try:
+        retrain_model_batch()
+        
+        # Update config with last retrain time
+        config = get_schedule_config()
+        config["last_retrain"] = datetime.now().isoformat()
+        with open(CONFIG_FILE, "w") as f:
+            json.dump(config, f, indent=2)
+        
+        return {
+            "success": True,
+            "message": "Manual retraining completed",
+            "timestamp": datetime.now().isoformat()
+        }
+    except Exception as e:
+        logger.error(f"Manual retraining failed: {e}")
+        return {"success": False, "error": str(e)}
 
 
 if __name__ == "__main__": 

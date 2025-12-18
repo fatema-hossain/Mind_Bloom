@@ -42,11 +42,18 @@ def init_db():
         username TEXT UNIQUE NOT NULL,
         email TEXT UNIQUE,
         password_hash TEXT NOT NULL,
+        role TEXT DEFAULT 'user',
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         last_login DATETIME,
         is_active INTEGER DEFAULT 1
     )
     """)
+    
+    # Add role column if it doesn't exist (for existing databases)
+    try:
+        cursor.execute("ALTER TABLE users ADD COLUMN role TEXT DEFAULT 'user'")
+    except sqlite3.OperationalError:
+        pass  # Column already exists
     
     # Table 1: Predictions (all predictions made by users)
     cursor.execute("""
@@ -149,7 +156,50 @@ def init_db():
     
     conn.commit()
     conn.close()
+    
+    # Seed hardcoded admin accounts
+    seed_admin_users()
+    
     print("[OK] Database initialized successfully!")
+
+
+def seed_admin_users():
+    """Seed hardcoded admin accounts for the application."""
+    import hashlib
+    
+    # Hardcoded admin credentials
+    ADMIN_ACCOUNTS = [
+        {"username": "admin1", "password": "abrar6677"},
+        {"username": "admin2", "password": "fatema123"},
+        {"username": "admin3", "password": "salma123"},
+        {"username": "admin4", "password": "ismum123"},
+    ]
+    
+    conn = get_connection()
+    cursor = conn.cursor()
+    
+    for admin in ADMIN_ACCOUNTS:
+        password_hash = hashlib.sha256(admin["password"].encode()).hexdigest()
+        
+        # Check if admin already exists
+        cursor.execute("SELECT id FROM users WHERE username = ?", (admin["username"],))
+        existing = cursor.fetchone()
+        
+        if existing:
+            # Update existing admin to ensure role is 'admin'
+            cursor.execute("""
+            UPDATE users SET role = 'admin', password_hash = ? WHERE username = ?
+            """, (password_hash, admin["username"]))
+        else:
+            # Create new admin
+            cursor.execute("""
+            INSERT INTO users (username, password_hash, role)
+            VALUES (?, ?, 'admin')
+            """, (admin["username"], password_hash))
+    
+    conn.commit()
+    conn.close()
+    print("[OK] Admin accounts seeded")
 
 
 def save_prediction(
@@ -421,7 +471,7 @@ def verify_user(username: str, password: str) -> Dict:
         cursor = conn.cursor()
         
         cursor.execute("""
-        SELECT id, username, email, is_active FROM users 
+        SELECT id, username, email, role, is_active FROM users 
         WHERE username = ? AND password_hash = ?
         """, (username, password_hash))
         
@@ -440,6 +490,7 @@ def verify_user(username: str, password: str) -> Dict:
                 "user_id": user['id'],
                 "username": user['username'],
                 "email": user['email'],
+                "role": user['role'] or 'user',
                 "message": "Login successful"
             }
         else:
@@ -470,6 +521,49 @@ def get_user_by_username(username: str) -> Optional[Dict]:
     except Exception as e:
         print(f"❌ Error getting user: {e}")
         return None
+
+
+def change_password(username: str, current_password: str, new_password: str) -> Dict:
+    """
+    Change user password after verifying current password.
+    Returns dict with success status and message.
+    """
+    import hashlib
+    
+    current_hash = hashlib.sha256(current_password.encode()).hexdigest()
+    new_hash = hashlib.sha256(new_password.encode()).hexdigest()
+    
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        
+        # Verify current password
+        cursor.execute("""
+        SELECT id FROM users 
+        WHERE username = ? AND password_hash = ?
+        """, (username, current_hash))
+        
+        user = cursor.fetchone()
+        
+        if not user:
+            conn.close()
+            return {"success": False, "error": "Current password is incorrect"}
+        
+        # Update to new password
+        cursor.execute("""
+        UPDATE users SET password_hash = ? WHERE username = ?
+        """, (new_hash, username))
+        
+        conn.commit()
+        conn.close()
+        
+        return {
+            "success": True,
+            "message": "Password changed successfully"
+        }
+    except Exception as e:
+        print(f"❌ Error changing password: {e}")
+        return {"success": False, "error": str(e)}
 
 
 if __name__ == "__main__": 

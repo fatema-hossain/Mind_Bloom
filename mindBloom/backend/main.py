@@ -1,10 +1,11 @@
 import os
 import uuid
-from typing import Any, Dict, Optional
+import io
+from typing import Any, Dict, Optional, List
 
 import joblib
 import pandas as pd
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
@@ -12,7 +13,7 @@ from fastapi.responses import HTMLResponse
 from admin_dashboard import get_admin_dashboard
 
 # Import new online learning modules
-from database import init_db, save_prediction, save_feedback, schedule_follow_up, get_statistics, create_user, verify_user
+from database import init_db, save_prediction, save_feedback, schedule_follow_up, get_statistics, create_user, verify_user, change_password
 from scheduler import start_scheduler
 from shap_explainer import initialize_shap_explainer, get_shap_values, get_risk_factors_summary
 
@@ -460,12 +461,295 @@ def submit_feedback(req: FeedbackRequest):
 
 @app.get("/statistics")
 def get_collection_statistics():
-    """Get data collection statistics."""
-    stats = get_statistics()
+    """Get data collection statistics from CSV predictions log."""
+    from data_collector import get_statistics_from_csv
+    
+    # Get statistics from CSV (the actual data source)
+    csv_stats = get_statistics_from_csv()
+    
     return {
-        "data_collection_stats": stats,
+        "data_collection_stats": csv_stats,
         "message": "Online learning data accumulating...",
         "next_retraining": "Weekly on Sundays at 2:00 AM"
+    }
+
+
+# ============================================================================
+# BATCH CSV UPLOAD AND ASSESSMENT
+# ============================================================================
+
+@app.post("/batch-assess")
+async def batch_assess(file: UploadFile = File(...), save_to_log: bool = True):
+    """
+    Batch process a CSV file with multiple survey responses.
+    Returns predictions for each row along with SHAP explanations.
+    
+    Args:
+        file: CSV file with survey data (columns should match expected features)
+        save_to_log: Whether to save predictions to the predictions log
+    
+    Returns:
+        JSON with individual predictions and aggregate summary
+    """
+    from feature_derivation import derive_all_features
+    from data_collector import log_prediction
+    
+    # Read uploaded CSV
+    try:
+        contents = await file.read()
+        df = pd.read_csv(io.BytesIO(contents))
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Failed to read CSV file: {e}")
+    
+    if len(df) == 0:
+        raise HTTPException(status_code=400, detail="CSV file is empty")
+    
+    results = []
+    aggregate_risk = {"high": 0, "medium": 0, "low": 0}
+    all_shap_features = []
+    
+    for idx, row in df.iterrows():
+        try:
+            # Convert row to dict and clean values
+            incoming = row.to_dict()
+            incoming = {k: (None if pd.isna(v) else v) for k, v in incoming.items()}
+            
+            # Normalize common column names
+            if "Age" in incoming and "age" not in incoming:
+                incoming["age"] = incoming["Age"]
+            if "age" not in incoming and "Age" not in incoming:
+                # Skip rows without age
+                results.append({
+                    "row": idx,
+                    "status": "error",
+                    "error": "Missing required field: age"
+                })
+                continue
+            
+            # Derive all features
+            try:
+                derived_features = derive_all_features(incoming)
+            except Exception as e:
+                results.append({
+                    "row": idx,
+                    "status": "error", 
+                    "error": f"Feature derivation failed: {str(e)}"
+                })
+                continue
+            
+            # Build DataFrame for model
+            expected_cols = getattr(model, "feature_names_in_", None)
+            if expected_cols is not None:
+                model_df = pd.DataFrame([{col: derived_features.get(col) for col in expected_cols}])
+            else:
+                model_df = pd.DataFrame([derived_features])
+            
+            # Clean string columns
+            for c in model_df.columns:
+                if model_df[c].dtype == object:
+                    model_df[c] = model_df[c].astype(str).str.strip().str.lower()
+                    model_df[c] = model_df[c].replace({"nan": None, "none": None, "": None})
+            
+            # Make prediction
+            pred_idx = model.predict(model_df)[0]
+            classes = list(getattr(model, "classes_", ["high", "low", "medium"]))
+            risk_label = str(classes[pred_idx]) if pred_idx < len(classes) else str(pred_idx)
+            
+            # Get probabilities
+            probabilities = None
+            if hasattr(model, "predict_proba"):
+                try:
+                    probs = model.predict_proba(model_df)[0]
+                    if classes and len(classes) == len(probs):
+                        probabilities = {str(classes[i]): float(probs[i]) for i in range(len(classes))}
+                except Exception:
+                    pass
+            
+            # Get SHAP values
+            shap_explanation = None
+            try:
+                shap_result = get_shap_values(model_df, top_k=5)
+                if shap_result.get("success"):
+                    risk_factors = get_risk_factors_summary(shap_result)
+                    shap_explanation = {
+                        "top_features": shap_result.get("top_features", []),
+                        "risk_factors": risk_factors,
+                    }
+                    # Collect for aggregate
+                    all_shap_features.extend(shap_result.get("top_features", []))
+            except Exception:
+                pass
+            
+            # Update aggregate counts
+            aggregate_risk[risk_label.lower()] = aggregate_risk.get(risk_label.lower(), 0) + 1
+            
+            # Save to log if requested
+            if save_to_log:
+                try:
+                    log_prediction(derived_features, risk_label, probabilities)
+                except Exception:
+                    pass
+            
+            results.append({
+                "row": idx,
+                "status": "success",
+                "risk_level": risk_label,
+                "probabilities": probabilities,
+                "shap_explanation": shap_explanation,
+            })
+            
+        except Exception as e:
+            results.append({
+                "row": idx,
+                "status": "error",
+                "error": str(e)
+            })
+    
+    # Calculate aggregate SHAP summary
+    aggregate_shap = _aggregate_shap_features(all_shap_features)
+    
+    return {
+        "total_rows": len(df),
+        "successful": len([r for r in results if r.get("status") == "success"]),
+        "failed": len([r for r in results if r.get("status") == "error"]),
+        "risk_distribution": aggregate_risk,
+        "aggregate_shap": aggregate_shap,
+        "results": results,
+    }
+
+
+def _aggregate_shap_features(all_features: List[Dict]) -> Dict:
+    """Aggregate SHAP features across multiple predictions."""
+    if not all_features:
+        return {"increasing_risk": [], "decreasing_risk": []}
+    
+    # Group by feature name and impact
+    increasing = {}
+    decreasing = {}
+    
+    for f in all_features:
+        fname = f.get("feature", "")
+        impact = f.get("impact", "")
+        abs_val = abs(f.get("shap_value", 0))
+        
+        if impact == "increases_risk":
+            if fname not in increasing:
+                increasing[fname] = {"count": 0, "total_impact": 0}
+            increasing[fname]["count"] += 1
+            increasing[fname]["total_impact"] += abs_val
+        elif impact == "decreases_risk":
+            if fname not in decreasing:
+                decreasing[fname] = {"count": 0, "total_impact": 0}
+            decreasing[fname]["count"] += 1
+            decreasing[fname]["total_impact"] += abs_val
+    
+    # Sort by frequency and impact
+    top_increasing = sorted(
+        [{"feature": k, "frequency": v["count"], "avg_impact": v["total_impact"]/v["count"]} 
+         for k, v in increasing.items()],
+        key=lambda x: (x["frequency"], x["avg_impact"]),
+        reverse=True
+    )[:5]
+    
+    top_decreasing = sorted(
+        [{"feature": k, "frequency": v["count"], "avg_impact": v["total_impact"]/v["count"]} 
+         for k, v in decreasing.items()],
+        key=lambda x: (x["frequency"], x["avg_impact"]),
+        reverse=True
+    )[:5]
+    
+    return {
+        "increasing_risk": top_increasing,
+        "decreasing_risk": top_decreasing
+    }
+
+
+@app.get("/aggregate-shap")
+def get_aggregate_shap(limit: int = 20):
+    """
+    Get aggregated SHAP feature importance across recent predictions.
+    
+    This analyzes the most common risk-increasing and risk-decreasing factors
+    across the most recent predictions stored in the CSV log.
+    
+    Args:
+        limit: Number of recent predictions to analyze (default: 20)
+    
+    Returns:
+        Aggregated risk factors with frequency and average impact
+    """
+    from data_collector import get_recent_predictions
+    from feature_derivation import derive_all_features
+    
+    # Get recent predictions from CSV
+    recent = get_recent_predictions(limit=limit)
+    
+    if not recent:
+        return {
+            "success": True,
+            "predictions_analyzed": 0,
+            "message": "No predictions found to analyze",
+            "aggregate_shap": {
+                "increasing_risk": [],
+                "decreasing_risk": []
+            }
+        }
+    
+    all_shap_features = []
+    analyzed_count = 0
+    
+    for pred in recent:
+        try:
+            # Derive features from the stored prediction data
+            derived_features = derive_all_features(pred)
+            
+            # Build DataFrame for model
+            expected_cols = getattr(model, "feature_names_in_", None)
+            if expected_cols is not None:
+                model_df = pd.DataFrame([{col: derived_features.get(col) for col in expected_cols}])
+            else:
+                model_df = pd.DataFrame([derived_features])
+            
+            # Clean string columns
+            for c in model_df.columns:
+                if model_df[c].dtype == object:
+                    model_df[c] = model_df[c].astype(str).str.strip().str.lower()
+                    model_df[c] = model_df[c].replace({"nan": None, "none": None, "": None})
+            
+            # Get SHAP values
+            shap_result = get_shap_values(model_df, top_k=10)
+            if shap_result.get("success"):
+                all_shap_features.extend(shap_result.get("top_features", []))
+                analyzed_count += 1
+                
+        except Exception as e:
+            # Skip predictions that fail to process
+            continue
+    
+    # Aggregate the SHAP features
+    aggregate_shap = _aggregate_shap_features(all_shap_features)
+    
+    return {
+        "success": True,
+        "predictions_analyzed": analyzed_count,
+        "total_predictions": len(recent),
+        "aggregate_shap": aggregate_shap,
+        "message": f"Analyzed SHAP values from {analyzed_count} recent predictions"
+    }
+
+
+@app.get("/recent-predictions")
+def get_recent_predictions_api(limit: int = 10):
+    """
+    Get the most recent predictions for display.
+    """
+    from data_collector import get_recent_predictions
+    
+    predictions = get_recent_predictions(limit=limit)
+    
+    return {
+        "predictions": predictions,
+        "count": len(predictions)
     }
 
 
@@ -530,15 +814,142 @@ def login_user(req: UserLoginRequest):
     result = verify_user(req.username, req.password)
     
     if result["success"]:
+        user_role = result.get("role", "user")
+        print(f"[LOGIN] User {result['username']} logged in with role: {user_role}")
         return {
             "status": "success",
             "user_id": result["user_id"],
             "username": result["username"],
             "email": result.get("email"),
+            "role": user_role,
             "message": result["message"]
         }
     else:
         raise HTTPException(status_code=401, detail=result["error"])
+
+
+class ChangePasswordRequest(BaseModel):
+    """Change password request model."""
+    username: str
+    current_password: str
+    new_password: str
+
+
+# Hardcoded admin credentials (for dev-only display)
+ADMIN_CREDENTIALS = {
+    "admin1": "abrar6677",
+    "admin2": "fatema123",
+    "admin3": "salma123",
+    "admin4": "ismum123",
+}
+
+
+@app.get("/auth/admin-info/{username}")
+def get_admin_info(username: str):
+    """
+    Get admin credentials for display (DEV ONLY).
+    In production, this should return limited info.
+    """
+    # Check if running in development mode
+    is_dev = os.getenv("ENVIRONMENT", "development").lower() in ["development", "dev", "local"]
+    
+    if username in ADMIN_CREDENTIALS:
+        if is_dev:
+            return {
+                "status": "success",
+                "username": username,
+                "password": ADMIN_CREDENTIALS[username],
+                "role": "admin",
+                "is_dev": True
+            }
+        else:
+            # Production: don't expose password
+            return {
+                "status": "success",
+                "username": username,
+                "role": "admin",
+                "is_dev": False
+            }
+    else:
+        raise HTTPException(status_code=404, detail="Admin not found")
+
+
+@app.get("/auth/fix-admin-roles")
+def fix_admin_roles():
+    """
+    Manually trigger admin role seeding (for fixing existing databases).
+    """
+    from database import seed_admin_users
+    try:
+        seed_admin_users()
+        return {"status": "success", "message": "Admin roles have been fixed. Please log out and log back in."}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to fix admin roles: {e}")
+
+
+@app.post("/auth/change-password")
+def change_user_password(req: ChangePasswordRequest):
+    """
+    Change user password after verifying current password.
+    """
+    # Validate new password
+    if len(req.new_password) < 6:
+        raise HTTPException(status_code=400, detail="New password must be at least 6 characters")
+    
+    if req.current_password == req.new_password:
+        raise HTTPException(status_code=400, detail="New password must be different from current password")
+    
+    result = change_password(req.username, req.current_password, req.new_password)
+    
+    if result["success"]:
+        return {
+            "status": "success",
+            "message": result["message"]
+        }
+    else:
+        raise HTTPException(status_code=400, detail=result["error"])
+
+
+# ============================================================================
+# ADMIN RETRAIN SCHEDULE CONFIGURATION
+# ============================================================================
+
+class RetrainScheduleRequest(BaseModel):
+    """Retrain schedule configuration request."""
+    schedule: str  # "daily", "weekly", "manual"
+
+
+@app.get("/admin/retrain-schedule")
+def get_retrain_schedule():
+    """Get current retrain schedule configuration."""
+    from scheduler import get_current_schedule
+    return get_current_schedule()
+
+
+@app.post("/admin/retrain-schedule")
+def set_retrain_schedule(req: RetrainScheduleRequest):
+    """Update the model retraining schedule."""
+    from scheduler import update_retrain_schedule
+    
+    result = update_retrain_schedule(req.schedule)
+    
+    if result.get("success"):
+        return result
+    else:
+        raise HTTPException(status_code=400, detail=result.get("error", "Failed to update schedule"))
+
+
+@app.post("/admin/retrain-now")
+def trigger_retrain_now():
+    """Manually trigger model retraining."""
+    from scheduler import trigger_manual_retrain
+    
+    result = trigger_manual_retrain()
+    
+    if result.get("success"):
+        return result
+    else:
+        raise HTTPException(status_code=500, detail=result.get("error", "Retraining failed"))
 
 
 # ============================================================================
