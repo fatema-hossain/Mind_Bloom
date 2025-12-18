@@ -17,6 +17,9 @@ from database import init_db, save_prediction, save_feedback, schedule_follow_up
 from scheduler import start_scheduler
 from shap_explainer import initialize_shap_explainer, get_shap_values, get_risk_factors_summary
 
+# Import chat router for conversational endpoint
+from chat import router as chat_router
+
 app = FastAPI(title="PPD Predictor API", version="1.0")
 # Initialize database and scheduler on startup
 @app.on_event("startup")
@@ -959,4 +962,5 @@ def trigger_retrain_now():
 @app.get("/admin/dashboard", response_class=HTMLResponse)
 def admin_dashboard():
     """Admin dashboard for monitoring online learning."""
+
     return get_admin_dashboard()
