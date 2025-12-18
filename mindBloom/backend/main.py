@@ -12,7 +12,7 @@ from fastapi.responses import HTMLResponse
 from admin_dashboard import get_admin_dashboard
 
 # Import new online learning modules
-from database import init_db, save_prediction, save_feedback, schedule_follow_up, get_statistics
+from database import init_db, save_prediction, save_feedback, schedule_follow_up, get_statistics, create_user, verify_user
 from scheduler import start_scheduler
 from shap_explainer import initialize_shap_explainer, get_shap_values, get_risk_factors_summary
 
@@ -480,6 +480,67 @@ def health_check():
         "feedback_rate": f"{stats['feedback_rate']}%",
         "scheduler": "active"
     }
+# ============================================================================
+# USER AUTHENTICATION ENDPOINTS
+# ============================================================================
+
+class UserRegisterRequest(BaseModel):
+    """User registration request."""
+    username: str
+    password: str
+    email: Optional[str] = None
+
+
+class UserLoginRequest(BaseModel):
+    """User login request."""
+    username: str
+    password: str
+
+
+@app.post("/auth/register")
+def register_user(req: UserRegisterRequest):
+    """
+    Register a new user account.
+    Stores username and hashed password in database.
+    """
+    # Basic validation
+    if len(req.username) < 3:
+        raise HTTPException(status_code=400, detail="Username must be at least 3 characters")
+    if len(req.password) < 6:
+        raise HTTPException(status_code=400, detail="Password must be at least 6 characters")
+    
+    result = create_user(req.username, req.password, req.email)
+    
+    if result["success"]:
+        return {
+            "status": "success",
+            "user_id": result["user_id"],
+            "username": result["username"],
+            "message": result["message"]
+        }
+    else:
+        raise HTTPException(status_code=400, detail=result["error"])
+
+
+@app.post("/auth/login")
+def login_user(req: UserLoginRequest):
+    """
+    Authenticate user credentials and return user info.
+    """
+    result = verify_user(req.username, req.password)
+    
+    if result["success"]:
+        return {
+            "status": "success",
+            "user_id": result["user_id"],
+            "username": result["username"],
+            "email": result.get("email"),
+            "message": result["message"]
+        }
+    else:
+        raise HTTPException(status_code=401, detail=result["error"])
+
+
 # ============================================================================
 # ADMIN DASHBOARD
 # ============================================================================

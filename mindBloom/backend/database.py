@@ -35,6 +35,19 @@ def init_db():
     conn = get_connection()
     cursor = conn.cursor()
     
+    # Table 0: Users (authentication)
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT UNIQUE NOT NULL,
+        email TEXT UNIQUE,
+        password_hash TEXT NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        last_login DATETIME,
+        is_active INTEGER DEFAULT 1
+    )
+    """)
+    
     # Table 1: Predictions (all predictions made by users)
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS predictions (
@@ -348,6 +361,115 @@ def get_statistics() -> Dict:
         "average_confidence": round(avg_confidence, 4)
     }
 
+
+
+# ============================================================================
+# USER AUTHENTICATION FUNCTIONS
+# ============================================================================
+
+def create_user(username: str, password: str, email: Optional[str] = None) -> Dict:
+    """
+    Create a new user account.
+    Returns dict with success status and user_id or error message.
+    """
+    import hashlib
+    
+    # Hash the password with SHA-256
+    password_hash = hashlib.sha256(password.encode()).hexdigest()
+    
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        
+        cursor.execute("""
+        INSERT INTO users (username, email, password_hash)
+        VALUES (?, ?, ?)
+        """, (username, email, password_hash))
+        
+        user_id = cursor.lastrowid
+        conn.commit()
+        conn.close()
+        
+        return {
+            "success": True,
+            "user_id": user_id,
+            "username": username,
+            "message": "Account created successfully"
+        }
+    except sqlite3.IntegrityError as e:
+        if "username" in str(e).lower():
+            return {"success": False, "error": "Username already exists"}
+        elif "email" in str(e).lower():
+            return {"success": False, "error": "Email already registered"}
+        return {"success": False, "error": "Registration failed"}
+    except Exception as e:
+        print(f"❌ Error creating user: {e}")
+        return {"success": False, "error": str(e)}
+
+
+def verify_user(username: str, password: str) -> Dict:
+    """
+    Verify user credentials for login.
+    Returns dict with success status and user info or error message.
+    """
+    import hashlib
+    
+    password_hash = hashlib.sha256(password.encode()).hexdigest()
+    
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        
+        cursor.execute("""
+        SELECT id, username, email, is_active FROM users 
+        WHERE username = ? AND password_hash = ?
+        """, (username, password_hash))
+        
+        user = cursor.fetchone()
+        
+        if user:
+            # Update last login time
+            cursor.execute("""
+            UPDATE users SET last_login = ? WHERE id = ?
+            """, (datetime.now().isoformat(), user['id']))
+            conn.commit()
+            conn.close()
+            
+            return {
+                "success": True,
+                "user_id": user['id'],
+                "username": user['username'],
+                "email": user['email'],
+                "message": "Login successful"
+            }
+        else:
+            conn.close()
+            return {"success": False, "error": "Invalid username or password"}
+    except Exception as e:
+        print(f"❌ Error verifying user: {e}")
+        return {"success": False, "error": str(e)}
+
+
+def get_user_by_username(username: str) -> Optional[Dict]:
+    """Get user details by username."""
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        
+        cursor.execute("""
+        SELECT id, username, email, created_at, last_login, is_active 
+        FROM users WHERE username = ?
+        """, (username,))
+        
+        user = cursor.fetchone()
+        conn.close()
+        
+        if user:
+            return dict(user)
+        return None
+    except Exception as e:
+        print(f"❌ Error getting user: {e}")
+        return None
 
 
 if __name__ == "__main__": 
