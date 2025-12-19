@@ -1,0 +1,11 @@
+json_logs/
+__pycache__/
+.vscode/
+.env
+.env.*
+test_integration.py 
+json_chatbot.py
+chatbot.py
+# Node
+node_modules/
+frontend/node_modules/

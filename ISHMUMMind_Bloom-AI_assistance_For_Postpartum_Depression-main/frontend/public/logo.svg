@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300" fill="none">
+  <defs>
+    <linearGradient id="flowerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FFD4B8;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFC4D0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B8E6D5;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="stemGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4E8E0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFD4C4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Stem -->
+  <path d="M 100 150 Q 105 200 100 250 Q 95 200 100 150" stroke="url(#stemGrad)" stroke-width="3" fill="none" opacity="0.6"/>
+  
+  <!-- Flower head - central point -->
+  <circle cx="100" cy="110" r="4" fill="url(#flowerGrad)" opacity="0.8"/>
+  
+  <!-- Dandelion seeds -->
+  <g opacity="0.7">
+    <circle cx="100" cy="75" r="3.5" fill="#FFD4B8"/>
+    <line x1="100" y1="110" x2="100" y2="78" stroke="#FFD4B8" stroke-width="1.5"/>
+    
+    <circle cx="115" cy="78" r="3.5" fill="#FFD0BC"/>
+    <line x1="100" y1="110" x2="115" y2="81" stroke="#FFD0BC" stroke-width="1.5"/>
+    
+    <circle cx="128" cy="85" r="3.5" fill="#FFDCC4"/>
+    <line x1="100" y1="110" x2="128" y2="88" stroke="#FFDCC4" stroke-width="1.5"/>
+    
+    <circle cx="138" cy="95" r="3.5" fill="#FFE8CC"/>
+    <line x1="100" y1="110" x2="138" y2="98" stroke="#FFE8CC" stroke-width="1.5"/>
+    
+    <circle cx="145" cy="108" r="3.5" fill="#D8E8D4"/>
+    <line x1="100" y1="110" x2="145" y2="111" stroke="#D8E8D4" stroke-width="1.5"/>
+    
+    <circle cx="140" cy="122" r="3.5" fill="#C8E4D8"/>
+    <line x1="100" y1="110" x2="140" y2="125" stroke="#C8E4D8" stroke-width="1.5"/>
+    
+    <circle cx="85" cy="78" r="3.5" fill="#FFD4C0"/>
+    <line x1="100" y1="110" x2="85" y2="81" stroke="#FFD4C0" stroke-width="1.5"/>
+    
+    <circle cx="72" cy="85" r="3.5" fill="#FFDCC8"/>
+    <line x1="100" y1="110" x2="72" y2="88" stroke="#FFDCC8" stroke-width="1.5"/>
+    
+    <circle cx="62" cy="95" r="3.5" fill="#FFE4D0"/>
+    <line x1="100" y1="110" x2="62" y2="98" stroke="#FFE4D0" stroke-width="1.5"/>
+    
+    <circle cx="55" cy="108" r="3.5" fill="#B8E6D5"/>
+    <line x1="100" y1="110" x2="55" y2="111" stroke="#B8E6D5" stroke-width="1.5"/>
+    
+    <circle cx="60" cy="122" r="3.5" fill="#C0E8DA"/>
+    <line x1="100" y1="110" x2="60" y2="125" stroke="#C0E8DA" stroke-width="1.5"/>
+    
+    <circle cx="108" cy="82" r="3" fill="#FFDCC0"/>
+    <line x1="100" y1="110" x2="108" y2="85" stroke="#FFDCC0" stroke-width="1.5"/>
+    
+    <circle cx="120" cy="90" r="3" fill="#FFE0C8"/>
+    <line x1="100" y1="110" x2="120" y2="93" stroke="#FFE0C8" stroke-width="1.5"/>
+    
+    <circle cx="132" cy="100" r="3" fill="#FFE8D4"/>
+    <line x1="100" y1="110" x2="132" y2="103" stroke="#FFE8D4" stroke-width="1.5"/>
+    
+    <circle cx="92" cy="82" r="3" fill="#FFD8C4"/>
+    <line x1="100" y1="110" x2="92" y2="85" stroke="#FFD8C4" stroke-width="1.5"/>
+    
+    <circle cx="80" cy="90" r="3" fill="#FFDCCC"/>
+    <line x1="100" y1="110" x2="80" y2="93" stroke="#FFDCCC" stroke-width="1.5"/>
+    
+    <circle cx="68" cy="100" r="3" fill="#C4E6DC"/>
+    <line x1="100" y1="110" x2="68" y2="103" stroke="#C4E6DC" stroke-width="1.5"/>
+  </g>
+</svg>
+

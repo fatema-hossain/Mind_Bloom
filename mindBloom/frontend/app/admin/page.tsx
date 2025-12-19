@@ -708,6 +708,40 @@ export default function AdminPage() {
           </div>
         </section>
 
+        {/* Chatbot LLM Settings Section */}
+        <section className="mb-12 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-green-50/90 via-emerald-50/80 to-teal-50/90 backdrop-blur-2xl border border-green-200/60 shadow-2xl animate-in fade-in slide-in-from-left-4 duration-700 delay-300">
+          <div className="flex items-start gap-4 mb-6">
+            <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center border border-green-300 text-2xl">
+              🤖
+            </div>
+            <div className="flex-1">
+              <h2 className="text-3xl font-bold text-slate-800 mb-2">Chatbot AI Settings</h2>
+              <p className="text-slate-700">Configure the AI provider for the mental health chatbot</p>
+            </div>
+          </div>
+
+          <div className="p-6 bg-white/70 rounded-2xl border-2 border-green-200">
+            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+              <div>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">LLM Provider Configuration</h3>
+                <p className="text-sm text-slate-700">
+                  Configure external AI (OpenAI, Gemini, Mistral, etc.) or use the free rule-based fallback.
+                </p>
+                <ul className="mt-3 text-xs text-slate-600 space-y-1">
+                  <li>• <strong>With API Key:</strong> Intelligent, context-aware AI responses</li>
+                  <li>• <strong>Without API Key:</strong> Free rule-based chatbot with PPD guidance</li>
+                </ul>
+              </div>
+              <a
+                href="/admin/llm-settings"
+                className="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold rounded-2xl hover:shadow-lg transition-all duration-200 hover:from-green-600 hover:to-emerald-600 text-center whitespace-nowrap"
+              >
+                ⚙️ Configure LLM
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* Data Collection Status */}
         <section className="mb-12 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-purple-50/90 via-pink-50/85 to-blue-50/85 backdrop-blur-2xl border border-purple-200/60 shadow-2xl animate-in fade-in slide-in-from-left-4 duration-700 delay-300">
           <div className="flex items-start gap-4">

@@ -960,3 +960,390 @@ def trigger_retrain_now():
 def admin_dashboard():
     """Admin dashboard for monitoring online learning."""
     return get_admin_dashboard()
+
+
+# ============================================================================
+# CHATBOT INTEGRATION - Model-Agnostic LLM with Fallback
+# ============================================================================
+# 
+# Architecture:
+#   - Supports multiple LLM providers (OpenAI, Gemini, Mistral, Anthropic, OpenRouter)
+#   - Automatically falls back to rule-based chatbot when no API key configured
+#   - Admin can configure provider and API key at runtime
+#
+# Decision Flow:
+#   IF valid_api_key_configured → Use external LLM
+#   ELSE → Use rule-based fallback (TF-IDF + FAQ matching)
+# ============================================================================
+
+import json
+from datetime import datetime
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Import LLM adapter system
+from llm_adapter import (
+    get_llm_router, 
+    configure_llm, 
+    get_llm_status, 
+    LLMProvider,
+    detect_provider_from_key,
+    auto_detect_and_configure
+)
+
+# Fallback is now initialized internally in the router constructor
+# No need for external setup - this prevents issues with hot reloads
+print("[CHAT] Initializing LLM Router...")
+_llm_router = get_llm_router()
+print(f"[CHAT] LLM Router initialized. Active provider: {_llm_router.get_active_provider()}")
+print(f"[CHAT] Fallback available: {_llm_router._fallback_handler is not None}")
+print("[CHAT] Chat endpoints are ready!")
+
+
+# Pydantic models for chat
+class ChatMessage(BaseModel):
+    """Single chat message."""
+    role: str
+    content: str
+
+
+class ChatRequest(BaseModel):
+    """Chat request with patient context."""
+    patient_json: Optional[Dict[str, Any]] = None
+    messages: List[ChatMessage]
+    max_tokens: Optional[int] = 400
+
+
+class ChatResponse(BaseModel):
+    """Chat response from AI."""
+    response: str
+    timestamp: str
+    provider: Optional[str] = None
+    using_llm: Optional[bool] = None
+
+
+# Admin models for LLM configuration
+class LLMConfigRequest(BaseModel):
+    """Request to configure LLM provider."""
+    provider: str  # openai, gemini, mistral, anthropic, openrouter
+    api_key: str
+    model: Optional[str] = None
+    base_url: Optional[str] = None
+
+
+class LLMStatusResponse(BaseModel):
+    """Response with current LLM status."""
+    llm_available: bool
+    active_provider: str
+    fallback_available: bool
+    supported_providers: List[str]
+
+
+@app.post("/chat", response_model=ChatResponse)
+def chat_with_assistant(request: ChatRequest):
+    """
+    Chat with AI mental health assistant.
+    
+    Uses the model-agnostic LLM adapter:
+    - If LLM is configured → Routes to external LLM (OpenAI, Gemini, etc.)
+    - If no LLM configured → Uses rule-based fallback chatbot
+    
+    Patient context is used to provide personalized responses.
+    
+    IMPORTANT: This endpoint should NEVER return a 404 or fail silently.
+    Even if both LLM and fallback fail, it returns a safe default message.
+    """
+    try:
+        # Build messages list
+        messages = [{"role": m.role, "content": m.content} for m in request.messages]
+        
+        if not messages:
+            # Instead of raising 400, provide a helpful response
+            return ChatResponse(
+                response="Hello! I'm here to help. How can I support you today?",
+                timestamp=datetime.now().isoformat(),
+                provider="Default",
+                using_llm=False
+            )
+        
+        # Ensure router has fallback initialized (defensive check)
+        if _llm_router._fallback_handler is None:
+            print("[CHAT] WARNING: Fallback handler was None, reinitializing...")
+            _llm_router._initialize_fallback()
+        
+        # Route through LLM router (handles LLM vs fallback decision)
+        result = _llm_router.chat(
+            messages=messages,
+            patient_context=request.patient_json,
+            max_tokens=request.max_tokens or 400
+        )
+        
+        # Ensure we have a valid response
+        response_text = result.get("response", "")
+        if not response_text or not response_text.strip():
+            response_text = (
+                "Thank you for sharing. I'm here to listen and support you. "
+                "Could you tell me more about what's on your mind?"
+            )
+        
+        return ChatResponse(
+            response=response_text,
+            timestamp=datetime.now().isoformat(),
+            provider=result.get("provider", "Unknown"),
+            using_llm=result.get("using_llm", False)
+        )
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        # Log the error but ALWAYS return a valid response
+        print(f"[CHAT] Error in chat endpoint: {e}")
+        return ChatResponse(
+            response=(
+                "I apologize, but I'm experiencing some technical difficulties. "
+                "Please know that I'm here to support you. "
+                "If you're in distress, please reach out to a trusted friend, family member, "
+                "or contact a mental health professional."
+            ),
+            timestamp=datetime.now().isoformat(),
+            provider="Error Recovery",
+            using_llm=False
+        )
+
+
+@app.get("/chat/status", response_model=LLMStatusResponse)
+def get_chat_status():
+    """
+    Get current chatbot configuration status.
+    Shows which provider is active and if fallback is available.
+    """
+    status = get_llm_status()
+    return LLMStatusResponse(
+        llm_available=status["llm_available"],
+        active_provider=status["active_provider"],
+        fallback_available=status["fallback_available"],
+        supported_providers=["openai", "gemini", "mistral", "anthropic", "openrouter", "custom"]
+    )
+
+
+@app.post("/admin/llm/configure")
+def configure_llm_endpoint(request: LLMConfigRequest):
+    """
+    Admin endpoint to configure LLM provider.
+    
+    Requires admin authentication.
+    Allows switching between providers at runtime.
+    """
+    try:
+        # Validate provider
+        valid_providers = ["openai", "gemini", "mistral", "anthropic", "openrouter", "custom"]
+        if request.provider.lower() not in valid_providers:
+            raise HTTPException(
+                status_code=400, 
+                detail=f"Invalid provider. Supported: {valid_providers}"
+            )
+        
+        # Configure the LLM
+        success = configure_llm(
+            provider=request.provider.lower(),
+            api_key=request.api_key,
+            model=request.model,
+            base_url=request.base_url
+        )
+        
+        if success:
+            status = get_llm_status()
+            return {
+                "success": True,
+                "message": f"LLM configured successfully",
+                "active_provider": status["active_provider"],
+                "llm_available": status["llm_available"]
+            }
+        else:
+            return {
+                "success": False,
+                "message": "Configuration failed - invalid API key or provider",
+                "active_provider": "Rule-Based Fallback",
+                "llm_available": False
+            }
+            
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/admin/llm/test")
+def test_llm_connection():
+    """
+    Test the current LLM configuration.
+    Sends a simple test message to verify connectivity.
+    """
+    result = _llm_router.test_connection()
+    return result
+
+
+class AutoDetectRequest(BaseModel):
+    """Request for API key auto-detection."""
+    api_key: str
+
+
+@app.post("/admin/llm/auto-detect")
+def auto_detect_provider(request: AutoDetectRequest):
+    """
+    Auto-detect LLM provider from API key.
+    
+    This endpoint:
+    1. Analyzes the API key format
+    2. Tests the key against supported providers
+    3. Returns detected provider and suggested model
+    4. Optionally auto-configures the router
+    
+    This allows admins to simply paste a key without knowing the provider.
+    """
+    try:
+        result = auto_detect_and_configure(request.api_key)
+        return result
+    except Exception as e:
+        return {
+            "success": False,
+            "provider": None,
+            "model": None,
+            "message": f"Detection failed: {str(e)}"
+        }
+
+
+@app.post("/admin/llm/detect-only")
+def detect_provider_only(request: AutoDetectRequest):
+    """
+    Detect provider without auto-configuring.
+    
+    Useful for UI that wants to show detected provider
+    before the user confirms configuration.
+    """
+    try:
+        provider, model, message = detect_provider_from_key(request.api_key)
+        return {
+            "success": provider is not None,
+            "provider": provider.value if provider else None,
+            "model": model,
+            "message": message
+        }
+    except Exception as e:
+        return {
+            "success": False,
+            "provider": None,
+            "model": None,
+            "message": f"Detection failed: {str(e)}"
+        }
+
+
+class ListModelsRequest(BaseModel):
+    """Request to list available models for a provider."""
+    api_key: str
+    provider: str = "gemini"
+
+
+@app.post("/admin/llm/list-models")
+def list_available_models(request: ListModelsRequest):
+    """
+    List available models for a given API key and provider.
+    
+    Currently supports:
+    - Gemini: Lists models that support generateContent
+    - OpenAI: Lists available models
+    - Other providers: Returns default model list
+    """
+    import requests as req
+    
+    try:
+        provider = request.provider.lower()
+        api_key = request.api_key.strip()
+        
+        if provider == "gemini":
+            # Call Gemini API to list models
+            response = req.get(
+                f"https://generativelanguage.googleapis.com/v1beta/models?key={api_key}",
+                timeout=10
+            )
+            if response.status_code == 200:
+                data = response.json()
+                models = []
+                for m in data.get("models", []):
+                    if "generateContent" in m.get("supportedGenerationMethods", []):
+                        model_id = m.get("name", "").replace("models/", "")
+                        display_name = m.get("displayName", model_id)
+                        models.append({
+                            "id": model_id,
+                            "name": display_name,
+                            "description": m.get("description", "")[:100]
+                        })
+                return {
+                    "success": True,
+                    "provider": "gemini",
+                    "models": models,
+                    "recommended": "gemini-1.5-flash" if any(m["id"] == "gemini-1.5-flash" for m in models) else models[0]["id"] if models else None
+                }
+            else:
+                return {"success": False, "message": f"API error: {response.status_code}", "models": []}
+        
+        elif provider == "openai":
+            response = req.get(
+                "https://api.openai.com/v1/models",
+                headers={"Authorization": f"Bearer {api_key}"},
+                timeout=10
+            )
+            if response.status_code == 200:
+                data = response.json()
+                # Filter for chat models
+                chat_models = [m for m in data.get("data", []) if "gpt" in m.get("id", "").lower()]
+                models = [{"id": m["id"], "name": m["id"], "description": ""} for m in chat_models[:10]]
+                return {
+                    "success": True,
+                    "provider": "openai",
+                    "models": models,
+                    "recommended": "gpt-4" if any(m["id"] == "gpt-4" for m in models) else "gpt-3.5-turbo"
+                }
+            else:
+                return {"success": False, "message": f"API error: {response.status_code}", "models": []}
+        
+        else:
+            # Return default models for other providers
+            default_models = {
+                "mistral": [{"id": "mistral-large-latest", "name": "Mistral Large", "description": ""}],
+                "anthropic": [{"id": "claude-3-sonnet-20240229", "name": "Claude 3 Sonnet", "description": ""}],
+                "openrouter": [{"id": "mistralai/mixtral-8x22b-instruct", "name": "Mixtral 8x22B", "description": ""}]
+            }
+            return {
+                "success": True,
+                "provider": provider,
+                "models": default_models.get(provider, []),
+                "recommended": default_models.get(provider, [{}])[0].get("id")
+            }
+            
+    except Exception as e:
+        return {"success": False, "message": str(e), "models": []}
+
+
+@app.delete("/admin/llm/configure")
+def clear_llm_configuration():
+    """
+    Clear LLM configuration and revert to fallback.
+    """
+    global _llm_router
+    _llm_router = get_llm_router()
+    _llm_router._config = None
+    _llm_router._adapter = None
+    
+    # Ensure fallback is still available
+    if _llm_router._fallback_handler is None:
+        _llm_router._initialize_fallback()
+    
+    return {
+        "success": True,
+        "message": "LLM configuration cleared. Using fallback chatbot.",
+        "active_provider": "Rule-Based Fallback",
+        "fallback_available": _llm_router._fallback_handler is not None
+    }

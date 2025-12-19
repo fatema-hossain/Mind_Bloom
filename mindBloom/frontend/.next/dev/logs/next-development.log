@@ -1,53 +1,1036 @@
-[00:00:02.002] Server  LOG      ✓ Ready in 1492ms
-[00:00:05.415] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:06.292] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:03:08.183] Browser ERROR   Failed to fetch statistics: {}
-[00:03:08.876] Browser ERROR   Failed to fetch statistics: {}
-[00:03:38.125] Browser ERROR   Failed to fetch statistics: {}
-[00:03:51.876] Browser ERROR   Failed to fetch statistics: {}
-[00:04:08.147] Browser ERROR   Failed to fetch statistics: {}
-[00:04:38.164] Browser ERROR   Failed to fetch statistics: {}
-[00:04:51.876] Browser ERROR   Failed to fetch statistics: {}
-[00:08:41.620] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:41.620] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:41.620] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:41.620] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:42.134] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:42.134] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:42.637] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:42.637] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:43.131] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:43.131] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:43.624] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:43.624] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:44.140] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:44.140] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:44.626] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:44.626] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:45.137] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:45.137] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:45.639] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:45.639] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:46.122] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:46.122] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:46.640] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:46.640] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:47.125] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:47.125] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:47.624] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:47.624] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:48.124] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:48.124] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:48.629] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:48.629] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:49.139] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:49.139] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:49.639] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:49.639] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:50.138] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:50.138] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:50.639] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:50.639] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:08:51.124] Browser LOG     [Assessment] Checking auth, stored user: null
-[00:08:51.124] Browser LOG     [Assessment] Fallback user: {"role":"admin","user_id":2,"username":"admin1"}
-[00:09:50.471] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:01.880] Server  LOG      ✓ Ready in 1403ms
+[00:00:05.624] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:08.435] Browser ERROR   Failed to fetch LLM status: {}
+[00:00:40.312] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:06.156] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:55.904] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./app/chatbot/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:11:55.912] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./app/chatbot/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:11:55.916] Server  LOG      ✓ Compiled in 230ms
+[00:11:56.953] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:57.401] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[08:58:11.298] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[08:58:16.119] Browser LOG     [Assessment] Checking auth, stored user: null
+[08:58:16.119] Browser LOG     [Assessment] No user found, resetting auth state
+[08:58:16.119] Browser LOG     [Assessment] Checking auth, stored user: null
+[08:58:16.119] Browser LOG     [Assessment] No user found, resetting auth state
+[08:58:16.620] Browser LOG     [Assessment] Checking auth, stored user: null
+[08:58:16.620] Browser LOG     [Assessment] No user found, resetting auth state
+[08:58:17.129] Browser LOG     [Assessment] Checking auth, stored user: null
+[08:58:17.129] Browser LOG     [Assessment] No user found, resetting auth state
+[08:58:17.619] Browser LOG     [Assessment] Checking auth, stored user: null
+[08:58:17.619] Browser LOG     [Assessment] No user found, resetting auth state
+[08:58:18.121] Browser LOG     [Assessment] Checking auth, stored user: null
+[08:58:18.121] Browser LOG     [Assessment] No user found, resetting auth state
+[08:58:18.629] Browser LOG     [Assessment] Checking auth, stored user: null
+[08:58:18.629] Browser LOG     [Assessment] No user found, resetting auth state
+[08:58:19.119] Browser LOG     [Assessment] Checking auth, stored user: null
+[08:58:19.119] Browser LOG     [Assessment] No user found, resetting auth state
+[08:58:19.622] Browser LOG     [Assessment] Checking auth, stored user: null
+[08:58:19.622] Browser LOG     [Assessment] No user found, resetting auth state
+[08:58:20.121] Browser LOG     [Assessment] Checking auth, stored user: null
+[08:58:20.121] Browser LOG     [Assessment] No user found, resetting auth state
+[08:58:20.619] Browser LOG     [Assessment] Checking auth, stored user: null
+[08:58:20.619] Browser LOG     [Assessment] No user found, resetting auth state
+[08:58:21.171] Browser LOG     [Assessment] Checking auth, stored user: null
+[08:58:21.171] Browser LOG     [Assessment] No user found, resetting auth state
+[08:58:25.777] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[08:58:25.941] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[08:58:25.941] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[08:58:25.941] Browser LOG     [Assessment] Setting isAdmin to: true
+[08:58:26.461] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[08:58:26.461] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[08:58:26.461] Browser LOG     [Assessment] Setting isAdmin to: true
+[08:58:26.943] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[08:58:26.943] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[08:58:26.943] Browser LOG     [Assessment] Setting isAdmin to: true
+[08:58:27.452] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[08:58:27.452] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[08:58:27.452] Browser LOG     [Assessment] Setting isAdmin to: true
+[08:58:27.948] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[08:58:27.948] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[08:58:27.948] Browser LOG     [Assessment] Setting isAdmin to: true
+[08:58:28.445] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[08:58:28.445] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[08:58:28.445] Browser LOG     [Assessment] Setting isAdmin to: true
+[08:58:28.944] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[08:58:28.944] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[08:58:28.944] Browser LOG     [Assessment] Setting isAdmin to: true
+[08:58:29.444] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[08:58:29.444] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[08:58:29.445] Browser LOG     [Assessment] Setting isAdmin to: true
+[08:58:29.945] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[08:58:29.945] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[08:58:29.945] Browser LOG     [Assessment] Setting isAdmin to: true
+[08:58:30.445] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[08:58:30.445] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[08:58:30.445] Browser LOG     [Assessment] Setting isAdmin to: true
+[08:58:30.956] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[08:58:30.957] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[08:58:30.957] Browser LOG     [Assessment] Setting isAdmin to: true
+[08:58:31.457] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[08:58:31.457] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[08:58:31.457] Browser LOG     [Assessment] Setting isAdmin to: true
+[08:58:31.960] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[08:58:31.960] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[08:58:31.960] Browser LOG     [Assessment] Setting isAdmin to: true
+[08:58:32.444] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[08:58:32.444] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[08:58:32.444] Browser LOG     [Assessment] Setting isAdmin to: true
+[08:58:34.951] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[10:17:44.362] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:44.362] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:44.362] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:44.362] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:44.362] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:44.362] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:44.872] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:44.872] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:44.872] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:45.375] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:45.375] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:45.375] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:45.872] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:45.872] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:45.872] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:46.378] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:46.379] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:46.379] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:46.871] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:46.871] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:46.871] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:47.370] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:47.370] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:47.370] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:47.873] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:47.873] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:47.873] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:48.371] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:48.371] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:48.371] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:48.872] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:48.872] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:48.872] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:49.375] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:49.375] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:49.375] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:49.877] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:49.877] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:49.877] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:50.377] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:50.377] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:50.377] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:50.876] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:50.876] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:50.876] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:51.379] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:51.379] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:51.379] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:51.864] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:51.864] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:51.864] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:52.381] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:52.381] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:52.381] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:52.882] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:52.882] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:52.882] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:53.381] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:53.381] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:53.381] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:53.868] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:53.869] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:53.869] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:54.368] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:54.368] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:54.368] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:54.874] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:54.874] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:54.874] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:55.376] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:55.377] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:55.377] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:55.878] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:55.878] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:55.878] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:56.380] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:56.380] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:56.380] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:56.880] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:56.880] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:56.880] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:57.369] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:57.369] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:57.369] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:57.871] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:57.871] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:57.871] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:58.374] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:58.374] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:58.374] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:58.877] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:58.877] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:58.877] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:59.382] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:59.382] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:59.382] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:17:59.881] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:17:59.881] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:17:59.881] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:00.368] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:00.368] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:00.368] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:00.872] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:00.872] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:00.872] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:01.378] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:01.378] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:01.378] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:01.882] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:01.882] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:01.882] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:02.368] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:02.368] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:02.368] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:02.873] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:02.873] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:02.873] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:03.375] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:03.375] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:03.375] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:03.879] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:03.879] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:03.879] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:04.365] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:04.365] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:04.365] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:04.868] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:04.869] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:04.869] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:05.371] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:05.371] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:05.371] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:05.875] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:05.875] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:05.875] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:06.380] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:06.380] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:06.380] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:06.880] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:06.881] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:06.881] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:07.368] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:07.368] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:07.368] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:07.868] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:07.868] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:07.868] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:08.372] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:08.372] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:08.372] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:08.876] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:08.876] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:08.876] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:09.379] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:09.379] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:09.379] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:09.872] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:09.872] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:09.872] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:10.375] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:10.375] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:10.375] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:10.880] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:10.880] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:10.880] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:11.374] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:11.374] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:11.374] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:11.875] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:11.875] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:11.875] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:12.378] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:12.379] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:12.379] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:12.875] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:12.875] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:12.875] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:13.375] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:13.375] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:13.375] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:13.871] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:13.871] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:13.871] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:14.366] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:14.366] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:14.366] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:14.864] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:14.865] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:14.865] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:15.368] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:15.368] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:15.368] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:15.882] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:15.882] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:15.882] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:16.371] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:16.371] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:16.371] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:16.872] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:16.872] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:16.872] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:17.371] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:17.371] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:17.371] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:17.870] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:17.870] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:17.870] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:18.374] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:18.374] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:18.374] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:18.876] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:18.876] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:18.876] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:19.377] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:19.377] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:19.377] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:19.876] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:19.876] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:19.876] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:20.376] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:20.376] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:20.376] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:20.872] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:20.872] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:20.872] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:21.373] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:21.373] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:21.373] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:21.873] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:21.873] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:21.873] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:22.377] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:22.377] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:22.377] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:22.877] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:22.877] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:22.877] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:23.371] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:23.371] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:23.371] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:23.875] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:23.875] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:23.875] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:24.379] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:24.379] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:24.379] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:24.881] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:24.881] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:24.881] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:25.370] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:25.370] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:25.370] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:25.869] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:25.869] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:25.869] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:26.369] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:26.369] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:26.369] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:26.871] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:26.871] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:26.871] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:27.368] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:27.368] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:27.368] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:27.869] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:27.869] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:27.869] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:28.370] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:28.370] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:28.370] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:28.868] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:28.868] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:28.868] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:29.361] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:29.361] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:29.361] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:29.868] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:29.868] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:29.868] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:30.383] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:30.383] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:30.383] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:30.869] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:30.869] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:30.869] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:31.370] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:31.370] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:31.370] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:31.870] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:31.870] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:31.870] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:32.368] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:32.368] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:32.368] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:32.871] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:32.871] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:32.871] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:33.372] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:33.372] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:33.372] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:33.873] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:33.873] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:33.873] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:34.378] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:34.378] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:34.378] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:34.877] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:34.877] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:34.877] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:35.374] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:35.374] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:35.374] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:35.877] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:35.877] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:35.877] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:36.374] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:36.374] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:36.374] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:36.877] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:36.877] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:36.877] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:37.369] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:37.369] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:37.369] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:37.871] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:37.872] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:37.872] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:38.370] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:38.371] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:38.371] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:38.869] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:38.869] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:38.869] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:39.371] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:39.371] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:39.371] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:39.870] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:39.870] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:39.870] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:40.361] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:40.362] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:40.362] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:40.869] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:40.869] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:40.869] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:41.372] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:41.372] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:41.372] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:41.876] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:41.876] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:41.876] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:42.377] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:42.377] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:42.377] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:42.876] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:42.876] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:42.876] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:43.375] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:43.375] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:43.375] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:43.873] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:43.873] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:43.873] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:44.373] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:44.373] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:44.374] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:44.868] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:44.868] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:44.868] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:45.374] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:45.374] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:45.374] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:45.877] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:45.877] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:45.877] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:46.378] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:46.378] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:46.378] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:46.878] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:46.878] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:46.878] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:47.375] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:47.375] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:47.375] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:47.870] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:47.870] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:47.870] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:48.373] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:48.373] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:48.373] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:48.871] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:48.871] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:48.871] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:49.373] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:49.373] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:49.373] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:49.870] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:49.870] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:49.870] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:50.371] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:50.372] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:50.372] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:50.875] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:50.875] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:50.875] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:51.376] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:51.376] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:51.376] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:51.865] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:51.865] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:51.865] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:52.361] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:52.361] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:52.361] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:52.877] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:52.877] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:52.877] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:53.376] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:53.376] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:53.376] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:53.860] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:53.860] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:53.860] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:54.375] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:54.375] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:54.375] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:54.876] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:54.876] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:54.876] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:55.363] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:55.363] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:55.363] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:55.878] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:55.878] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:55.878] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:56.379] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:56.379] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:56.379] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:56.881] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:56.881] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:56.881] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:57.382] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:57.382] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:57.382] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:57.866] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:57.866] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:57.866] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:58.380] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:58.380] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:58.380] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:58.880] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:58.880] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:58.880] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:59.366] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:59.366] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:59.366] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:18:59.884] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:18:59.884] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:18:59.885] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:00.369] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:00.369] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:00.369] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:00.869] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:00.869] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:00.869] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:01.369] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:01.370] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:01.370] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:01.873] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:01.873] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:01.873] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:02.375] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:02.375] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:02.375] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:02.878] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:02.879] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:02.879] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:03.380] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:03.380] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:03.380] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:03.878] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:03.878] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:03.878] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:04.379] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:04.379] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:04.379] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:04.879] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:04.879] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:04.879] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:05.377] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:05.377] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:05.377] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:05.863] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:05.863] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:05.863] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:06.380] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:06.380] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:06.380] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:06.880] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:06.880] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:06.880] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:07.365] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:07.365] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:07.365] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:07.869] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:07.869] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:07.869] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:08.370] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:08.370] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:08.370] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:08.873] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:08.873] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:08.873] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:09.370] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:09.370] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:09.370] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:09.868] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:09.868] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:09.868] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:10.369] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:10.369] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:10.369] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:10.867] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:10.867] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:10.867] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:11.380] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:11.380] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:11.380] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:11.880] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:11.880] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:11.880] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:12.380] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:12.380] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:12.380] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:12.881] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:12.881] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:12.881] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:13.370] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:13.370] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:13.370] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:13.881] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:13.881] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:13.881] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:14.374] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:14.374] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:14.374] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:14.878] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:14.878] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:14.878] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:15.381] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:15.381] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:15.381] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:15.879] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:15.879] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:15.879] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:16.382] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:16.382] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:16.382] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:16.871] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:16.871] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:16.871] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:17.373] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:17.373] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:17.373] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:17.877] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:17.877] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:17.877] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:18.373] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:18.373] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:18.373] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:18.872] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:18.872] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:18.872] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:19.372] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:19.372] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:19.372] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:19.873] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:19.873] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:19.873] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:20.370] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:20.370] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:20.370] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:20.868] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:20.868] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:20.868] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:21.372] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:21.372] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:21.372] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:21.873] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:21.873] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:21.873] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:22.378] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:22.378] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:22.378] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:22.876] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:22.876] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:22.876] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:23.375] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:23.376] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:23.376] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:23.876] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:23.876] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:23.876] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:24.378] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:24.378] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:24.378] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:27.150] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:27.150] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:27.150] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:27.150] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:27.150] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:27.150] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:28.162] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:28.162] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:28.162] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:34.164] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:34.164] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:34.164] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:34.164] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:34.164] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:34.164] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:34.164] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:34.164] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:34.165] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:34.165] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:34.165] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:34.165] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:34.165] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:34.165] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:34.165] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:34.165] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:34.165] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:34.165] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:36.160] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:36.160] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:36.160] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:36.160] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:36.160] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:36.160] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:38.161] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:38.161] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:38.161] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:38.161] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:38.161] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:38.161] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:40.162] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:40.162] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:40.162] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:40.162] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:40.162] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:40.162] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:45.149] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:45.149] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:45.149] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:45.149] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:45.149] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:45.149] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:45.149] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:45.149] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:45.149] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:45.149] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:45.149] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:45.149] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:45.150] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:45.150] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:45.150] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:46.152] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:46.152] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:46.152] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:47.162] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:47.162] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:47.162] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:51.154] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:51.154] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:51.154] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:51.154] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:51.154] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:51.154] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:51.154] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:51.154] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:51.154] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:51.154] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:51.154] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:51.154] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:52.154] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:52.154] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:52.154] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:53.154] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:53.154] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:53.154] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:54.153] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:54.153] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:54.153] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:55.153] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:55.153] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:55.153] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:56.150] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:56.150] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:56.150] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:57.149] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:57.149] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:57.149] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:58.152] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:58.152] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:58.152] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:19:59.150] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:19:59.150] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:19:59.150] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:00.148] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:00.148] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:00.148] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:01.152] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:01.152] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:01.152] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:02.150] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:02.150] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:02.150] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:03.163] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:03.163] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:03.163] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:10.153] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:10.153] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:10.153] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:10.153] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:10.153] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:10.153] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:10.153] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:10.153] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:10.153] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:10.153] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:10.153] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:10.153] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:10.153] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:10.153] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:10.153] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:10.153] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:10.153] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:10.153] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:10.153] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:10.153] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:10.153] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:11.151] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:11.151] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:11.151] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:12.149] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:12.149] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:12.149] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:13.162] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:13.162] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:13.162] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:15.158] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:15.158] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:15.158] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:15.158] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:15.158] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:15.158] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:20.157] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:20.157] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:20.157] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:20.157] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:20.157] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:20.157] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:20.157] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:20.157] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:20.157] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:20.157] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:20.157] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:20.157] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:20.157] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:20.157] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:20.157] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:23.154] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:23.154] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:23.154] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:23.154] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:23.154] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:23.154] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:23.154] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:23.154] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:23.154] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:20:24.157] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:20:24.157] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:20:24.157] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:23:19.160] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:23:19.160] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:23:19.160] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:23:19.160] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:23:19.160] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:23:19.160] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:23:19.160] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:23:19.160] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:23:19.160] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:26:19.160] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:26:19.160] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:26:19.160] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:26:19.160] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:26:19.160] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:26:19.160] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:26:19.160] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:26:19.160] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:26:19.160] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:30:19.161] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:30:19.161] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:30:19.161] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:30:19.161] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:30:19.161] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:30:19.161] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:30:19.161] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:30:19.161] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:30:19.161] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:30:19.161] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:30:19.161] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:30:19.161] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:35:19.153] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:35:19.153] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:35:19.153] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:35:19.153] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:35:19.153] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:35:19.153] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:35:19.153] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:35:19.153] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:35:19.153] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:35:19.153] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:35:19.153] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:35:19.153] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:35:19.153] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:35:19.153] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:35:19.153] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:36:19.160] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:36:19.160] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:36:19.160] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:40:19.163] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:40:19.163] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:40:19.163] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:40:19.163] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:40:19.163] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:40:19.163] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:40:19.163] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:40:19.163] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:40:19.163] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:40:19.163] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:40:19.163] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:40:19.163] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:44:19.153] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:44:19.153] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:44:19.153] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:44:19.153] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:44:19.153] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:44:19.153] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:44:19.153] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:44:19.153] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:44:19.153] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:44:19.153] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:44:19.153] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:44:19.153] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:45:19.159] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:45:19.159] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:45:19.159] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:47:19.155] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:47:19.155] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:47:19.155] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:47:19.155] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:47:19.155] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:47:19.155] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:49:19.157] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:49:19.157] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:49:19.157] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:49:19.157] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:49:19.157] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:49:19.157] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:56:19.161] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:56:19.162] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:56:19.162] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:56:19.162] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:56:19.162] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:56:19.162] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:56:19.162] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:56:19.162] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:56:19.162] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:56:19.162] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:56:19.162] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:56:19.162] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:56:19.162] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:56:19.162] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:56:19.162] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:56:19.162] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:56:19.162] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:56:19.162] Browser LOG     [Assessment] Setting isAdmin to: true
+[10:56:19.162] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[10:56:19.162] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[10:56:19.162] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:02:19.162] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:02:19.163] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:02:19.163] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:02:19.163] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:02:19.163] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:02:19.163] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:02:19.163] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:02:19.163] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:02:19.163] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:02:19.163] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:02:19.163] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:02:19.163] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:02:19.163] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:02:19.163] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:02:19.163] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:02:19.163] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:02:19.163] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:02:19.163] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:05:19.165] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:05:19.165] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:05:19.165] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:05:19.165] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:05:19.165] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:05:19.165] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:05:19.165] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:05:19.165] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:05:19.165] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:13:19.165] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:13:19.165] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:13:19.165] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:13:19.165] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:13:19.165] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:13:19.165] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:13:19.165] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:13:19.165] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:13:19.165] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:13:19.165] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:13:19.165] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:13:19.165] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:13:19.165] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:13:19.165] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:13:19.165] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:13:19.165] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:13:19.165] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:13:19.165] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:13:19.165] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:13:19.165] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:13:19.165] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:13:19.165] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:13:19.166] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:13:19.166] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:18:19.157] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:18:19.157] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:18:19.157] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:18:19.157] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:18:19.157] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:18:19.157] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:18:19.157] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:18:19.157] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:18:19.157] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:18:19.157] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:18:19.157] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:18:19.157] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:18:19.157] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:18:19.157] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:18:19.157] Browser LOG     [Assessment] Setting isAdmin to: true
