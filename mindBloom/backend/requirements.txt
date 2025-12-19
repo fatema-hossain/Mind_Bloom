@@ -11,6 +11,7 @@ apscheduler==3.10.4
 # Chatbot dependencies (AI mental health assistant)
 requests
 
-python-dotenv
+
 
 streamlit
+
