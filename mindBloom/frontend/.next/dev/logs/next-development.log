@@ -1034,3 +1034,58 @@
 [11:18:19.157] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
 [11:18:19.157] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
 [11:18:19.157] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:44:55.427] Browser LOG     [Assessment] Checking auth, stored user: null
+[11:44:55.427] Browser LOG     [Assessment] No user found, resetting auth state
+[11:44:55.427] Browser LOG     [Assessment] Checking auth, stored user: null
+[11:44:55.427] Browser LOG     [Assessment] No user found, resetting auth state
+[11:44:55.427] Browser LOG     [Assessment] Checking auth, stored user: null
+[11:44:55.427] Browser LOG     [Assessment] No user found, resetting auth state
+[11:44:55.643] Browser LOG     [Assessment] Checking auth, stored user: null
+[11:44:55.644] Browser LOG     [Assessment] No user found, resetting auth state
+[11:44:56.291] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[11:44:56.455] Browser LOG     [Assessment] Checking auth, stored user: null
+[11:44:56.455] Browser LOG     [Assessment] No user found, resetting auth state
+[11:58:12.970] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:58:12.971] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:58:12.971] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:58:12.971] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:58:12.971] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:58:12.971] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:58:12.971] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:58:12.971] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:58:12.971] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:58:12.971] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:58:12.971] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:58:12.971] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:58:12.971] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:58:12.971] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:58:12.971] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:58:12.971] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:58:12.971] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:58:12.971] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:58:13.400] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:58:13.400] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:58:13.400] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:58:13.881] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:58:13.881] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:58:13.881] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:58:14.379] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:58:14.379] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:58:14.379] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:58:15.001] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:58:15.001] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:58:15.001] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:58:15.390] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[11:58:15.653] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:58:15.653] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:58:15.653] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:58:16.159] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:58:16.159] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:58:16.159] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:58:16.666] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:58:16.666] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:58:16.666] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:58:17.206] Browser LOG     [Assessment] Checking auth, stored user: {"user_id":2,"username":"admin1","email":null,"role":"admin","loggedIn":true}
+[11:58:17.206] Browser LOG     [Assessment] Parsed user: {"email":null,"loggedIn":true,"role":"admin","user_id":2,"username":"admin1"}
+[11:58:17.206] Browser LOG     [Assessment] Setting isAdmin to: true
+[11:58:25.315] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

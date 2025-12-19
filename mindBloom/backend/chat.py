@@ -17,7 +17,8 @@ mental health professional.
 from __future__ import annotations
 
 import re
-from typing import Dict, List
+from datetime import datetime
+from typing import Any, Dict, List, Optional
 
 from fastapi import APIRouter
 from pydantic import BaseModel, Field
@@ -26,13 +27,32 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 router = APIRouter()
 
+
+# Request/Response models compatible with frontend
+class ChatMessage(BaseModel):
+    """Single chat message."""
+    role: str
+    content: str
+
+
 class ChatRequest(BaseModel):
-    """Request model for chat messages."""
-    message: str = Field(..., description="User's message to the chatbot")
+    """Request model for chat messages - supports both simple and complex formats."""
+    # Simple format (single message)
+    message: Optional[str] = Field(None, description="User's message to the chatbot")
+    # Complex format (conversation history with context)
+    patient_json: Optional[Dict[str, Any]] = None
+    messages: Optional[List[ChatMessage]] = None
+    max_tokens: Optional[int] = 400
+
 
 class ChatResponse(BaseModel):
-    """Response model returned by the chatbot."""
-    reply: str
+    """Response model returned by the chatbot - compatible with frontend."""
+    response: str  # Main response field expected by frontend
+    reply: Optional[str] = None  # Legacy field for backward compatibility
+    timestamp: Optional[str] = None
+    provider: Optional[str] = None
+    using_llm: Optional[bool] = None
+
 
 # ----------------------------------------------------------------------
 # Define a set of prompts and their associated responses.  Feel free to
@@ -79,8 +99,8 @@ FAQ: Dict[str, List[str]] = {
     ],
     # General motherhood and postpartum questions
     "what is postpartum depression": [
-        "Postpartum depression (PPD) is a type of depression that can affect parents after childbirth.  It involves emotional highs and lows, frequent crying, fatigue, guilt and anxiety【667415088068397†L43-L46】.  It's common to feel overwhelmed, but if these feelings persist, it's important to speak with a healthcare professional.",
-        "PPD is a mood disorder that happens after you give birth.  Symptoms can include sadness, irritability, guilt, anxiety and difficulty caring for your baby【667415088068397†L117-L126】.  Talking to a doctor or counselor can be very helpful."
+        "Postpartum depression (PPD) is a type of depression that can affect parents after childbirth.  It involves emotional highs and lows, frequent crying, fatigue, guilt and anxiety.  It's common to feel overwhelmed, but if these feelings persist, it's important to speak with a healthcare professional.",
+        "PPD is a mood disorder that happens after you give birth.  Symptoms can include sadness, irritability, guilt, anxiety and difficulty caring for your baby.  Talking to a doctor or counselor can be very helpful."
     ],
     "is it normal to feel overwhelmed after giving birth": [
         "Absolutely.  Adjusting to life with a newborn is challenging, and many parents feel overwhelmed.  It's important to ask for help and rest whenever possible.",
@@ -103,28 +123,28 @@ FAQ: Dict[str, List[str]] = {
     # Risk level 
     "low": [
         "Your risk level is low, which is encouraging. Self-care remains important, though. Here are some ideas:\n"
-        "1. Emotional well-being: share your feelings with someone you trust or join a support group【783358645326039†L350-L369】.\n"
-        "2. Rest: sleep when your baby sleeps and accept help with chores or childcare【783358645326039†L350-L369】.\n"
-        "3. Healthy habits: eat balanced meals, stay hydrated and take gentle walks or do light exercise【783358645326039†L350-L369】.\n"
-        "4. Stay connected: spend time with your partner and friends and avoid alcohol and recreational drugs【783358645326039†L350-L369】.\n"
+        "1. Emotional well-being: share your feelings with someone you trust or join a support group.\n"
+        "2. Rest: sleep when your baby sleeps and accept help with chores or childcare.\n"
+        "3. Healthy habits: eat balanced meals, stay hydrated and take gentle walks or do light exercise.\n"
+        "4. Stay connected: spend time with your partner and friends and avoid alcohol and recreational drugs.\n"
         "5. Monitor your mood: if you start to feel overwhelmed or your symptoms worsen, contact a healthcare provider for extra support."
     ],
     "medium": [
         "Your risk level is moderate. In addition to the self‑care tips above, consider these steps:\n"
-        "1. Professional support: schedule a consultation with a mental‑health professional or therapist【783358645326039†L382-L389】.\n"
-        "2. Coping strategies: ask about therapies like cognitive‑behavioural or interpersonal therapy which can be effective for postpartum depression【783358645326039†L382-L389】.\n"
-        "3. Continue self-care: rest, eat well and stay physically active when possible【783358645326039†L350-L369】.\n"
-        "4. Build a support network: reach out to loved ones and join support groups for new parents【783358645326039†L350-L369】.\n"
+        "1. Professional support: schedule a consultation with a mental‑health professional or therapist.\n"
+        "2. Coping strategies: ask about therapies like cognitive‑behavioural or interpersonal therapy which can be effective for postpartum depression.\n"
+        "3. Continue self-care: rest, eat well and stay physically active when possible.\n"
+        "4. Build a support network: reach out to loved ones and join support groups for new parents.\n"
         "5. Watch your symptoms: if they persist beyond two weeks or interfere with daily life, contact your healthcare provider."
     ],
     "high": [
-        "Your risk level is high. It’s important to seek prompt professional help. Consider the following:\n"
-        "1. Mental-health care: contact a doctor or therapist as soon as possible to discuss treatment options【783358645326039†L382-L389】.\n"
-        "2. Emotional well-being: talk openly with trusted friends or family about your feelings【783358645326039†L350-L369】.\n"
+        "Your risk level is high. It's important to seek prompt professional help. Consider the following:\n"
+        "1. Mental-health care: contact a doctor or therapist as soon as possible to discuss treatment options.\n"
+        "2. Emotional well-being: talk openly with trusted friends or family about your feelings.\n"
         "3. Fear and anxiety: discuss any fears or anxieties with your healthcare provider to develop coping strategies.\n"
-        "4. Relationships: communicate with your partner and set boundaries with family members to reduce stress【783358645326039†L350-L369】.\n"
-        "5. Family support: build a support network by asking for help with chores or childcare【783358645326039†L350-L369】.\n"
-        "6. Crisis planning: if you experience thoughts of harming yourself or your baby, seek immediate help by contacting a crisis hotline or emergency services【783358645326039†L440-L449】."
+        "4. Relationships: communicate with your partner and set boundaries with family members to reduce stress.\n"
+        "5. Family support: build a support network by asking for help with chores or childcare.\n"
+        "6. Crisis planning: if you experience thoughts of harming yourself or your baby, seek immediate help by contacting a crisis hotline or emergency services."
     ],
 
     # Assessment results and guidance
@@ -136,19 +156,19 @@ FAQ: Dict[str, List[str]] = {
     ],
     "provide some guidance": [
         "Based on your description, here are some observations and suggestions:\n"
-        "1. Emotional well-being: If you’re experiencing persistent sadness, hopelessness or loss of interest, talk to a mental-health professional for support【783358645326039†L382-L389】.\n"
-        "2. Fear and anxiety: It’s normal to feel anxious about pregnancy or motherhood; share your concerns with your doctor or a therapist and learn coping strategies.\n"
-        "3. Relationships: Stressful relationships can add to your burden; communicate with loved ones, set boundaries and consider couples counseling if needed【783358645326039†L350-L369】.\n"
-        "4. Support network: Building a support network is crucial — reach out to family, friends and support groups for help【783358645326039†L350-L369】.\n"
-        "5. Self-care: Rest when you can, eat nourishing foods and engage in light physical activity【783358645326039†L350-L369】. If your symptoms persist or worsen, seek medical advice."
+        "1. Emotional well-being: If you're experiencing persistent sadness, hopelessness or loss of interest, talk to a mental-health professional for support.\n"
+        "2. Fear and anxiety: It's normal to feel anxious about pregnancy or motherhood; share your concerns with your doctor or a therapist and learn coping strategies.\n"
+        "3. Relationships: Stressful relationships can add to your burden; communicate with loved ones, set boundaries and consider couples counseling if needed.\n"
+        "4. Support network: Building a support network is crucial — reach out to family, friends and support groups for help.\n"
+        "5. Self-care: Rest when you can, eat nourishing foods and engage in light physical activity. If your symptoms persist or worsen, seek medical advice."
     ],
     "guidance": [
         "Based on your description, here are some observations and suggestions:\n"
-        "1. Emotional well-being: If you’re experiencing persistent sadness, hopelessness or loss of interest, talk to a mental-health professional for support【783358645326039†L382-L389】.\n"
-        "2. Fear and anxiety: It’s normal to feel anxious about pregnancy or motherhood; share your concerns with your doctor or a therapist and learn coping strategies.\n"
-        "3. Relationships: Stressful relationships can add to your burden; communicate with loved ones, set boundaries and consider couples counseling if needed【783358645326039†L350-L369】.\n"
-        "4. Support network: Building a support network is crucial — reach out to family, friends and support groups for help【783358645326039†L350-L369】.\n"
-        "5. Self-care: Rest when you can, eat nourishing foods and engage in light physical activity【783358645326039†L350-L369】. If your symptoms persist or worsen, seek medical advice."
+        "1. Emotional well-being: If you're experiencing persistent sadness, hopelessness or loss of interest, talk to a mental-health professional for support.\n"
+        "2. Fear and anxiety: It's normal to feel anxious about pregnancy or motherhood; share your concerns with your doctor or a therapist and learn coping strategies.\n"
+        "3. Relationships: Stressful relationships can add to your burden; communicate with loved ones, set boundaries and consider couples counseling if needed.\n"
+        "4. Support network: Building a support network is crucial — reach out to family, friends and support groups for help.\n"
+        "5. Self-care: Rest when you can, eat nourishing foods and engage in light physical activity. If your symptoms persist or worsen, seek medical advice."
     ],
     # Coping strategies and support
     "coping strategies postpartum": [
@@ -167,46 +187,46 @@ FAQ: Dict[str, List[str]] = {
         "The PHQ-9 is a 9-item questionnaire used to screen for depression. Each item is scored from 0 to 3; total scores range from 0 to 27. A high score suggests more severe symptoms and may require further evaluation."
     ],
     "what is epds": [
-        "The Edinburgh Postnatal Depression Scale (EPDS) is a 10-item questionnaire used to identify women who may be experiencing postpartum depression. Each answer is scored from 0 to 3, giving a maximum total score of 30【307100439221270†L10-L88】. A score above 10 suggests depression may be present; if you have thoughts of harming yourself or your baby, contact your doctor or go to the nearest emergency room【307100439221270†L79-L82】."
+        "The Edinburgh Postnatal Depression Scale (EPDS) is a 10-item questionnaire used to identify women who may be experiencing postpartum depression. Each answer is scored from 0 to 3, giving a maximum total score of 30. A score above 10 suggests depression may be present; if you have thoughts of harming yourself or your baby, contact your doctor or go to the nearest emergency room."
     ],
     # Treatment and resource queries
     "postpartum depression treatment": [
-        "Postpartum depression is treatable. Options may include【783358645326039†L382-L389】:\n"
-        "1. Therapy: Cognitive-behavioral or interpersonal therapy can help you understand and cope with your feelings【783358645326039†L382-L389】.\n"
-        "2. Support groups: Talking with other parents who are experiencing similar feelings can be validating and helpful【783358645326039†L350-L369】.\n"
-        "3. Self-care and social support: Rest, eat nutritious foods, stay physically active and lean on friends and family【783358645326039†L350-L369】.\n"
-        "4. Medication: Antidepressants may be recommended by your doctor if symptoms are severe【783358645326039†L382-L389】.\n"
+        "Postpartum depression is treatable. Options may include:\n"
+        "1. Therapy: Cognitive-behavioral or interpersonal therapy can help you understand and cope with your feelings.\n"
+        "2. Support groups: Talking with other parents who are experiencing similar feelings can be validating and helpful.\n"
+        "3. Self-care and social support: Rest, eat nutritious foods, stay physically active and lean on friends and family.\n"
+        "4. Medication: Antidepressants may be recommended by your doctor if symptoms are severe.\n"
         "5. Work with a healthcare provider to decide which combination of treatments is best for you."
     ],
     "postpartum depression resources": [
-        "If you need support, here are some resources【783358645326039†L440-L449】:\n"
-        "1. Call the Suicide and Crisis Lifeline by dialing 988 (United States) or your local emergency number if you have thoughts of harming yourself or your baby【783358645326039†L440-L449】.\n"
-        "2. National Maternal Mental Health Hotline: 1-833-TLC-MAMA (1-833-852-6262)【783358645326039†L440-L449】.\n"
-        "3. Postpartum Support International helpline: 1-800-944-4773【783358645326039†L440-L449】.\n"
-        "4. Your healthcare provider, local hospital or mental-health professional can help connect you with support groups and treatment options【783358645326039†L440-L449】.\n"
+        "If you need support, here are some resources:\n"
+        "1. Call the Suicide and Crisis Lifeline by dialing 988 (United States) or your local emergency number if you have thoughts of harming yourself or your baby.\n"
+        "2. National Maternal Mental Health Hotline: 1-833-TLC-MAMA (1-833-852-6262).\n"
+        "3. Postpartum Support International helpline: 1-800-944-4773.\n"
+        "4. Your healthcare provider, local hospital or mental-health professional can help connect you with support groups and treatment options.\n"
         "5. Ask your doctor about local support groups, parenting classes and community resources."
     ],
     "postpartum depression symptoms": [
-        "Symptoms of postpartum depression may include persistent sadness, loss of interest or pleasure, fatigue, difficulty sleeping, irritability, guilt, anxiety and feelings of being overwhelmed【667415088068397†L117-L126】. Some people may also fear harming themselves or their baby. If these symptoms last longer than two weeks or interfere with daily life, talk to a healthcare provider."
+        "Symptoms of postpartum depression may include persistent sadness, loss of interest or pleasure, fatigue, difficulty sleeping, irritability, guilt, anxiety and feelings of being overwhelmed. Some people may also fear harming themselves or their baby. If these symptoms last longer than two weeks or interfere with daily life, talk to a healthcare provider."
     ],
     "postpartum depression danger signs": [
-        "Danger signs of postpartum mood disorders include thoughts of hurting yourself or your baby, hallucinations, delusions, extreme agitation or confusion, and rapid mood swings【667415088068397†L132-L140】. Seek immediate help from a healthcare professional or call a crisis hotline if you experience these symptoms【783358645326039†L440-L449】."
+        "Danger signs of postpartum mood disorders include thoughts of hurting yourself or your baby, hallucinations, delusions, extreme agitation or confusion, and rapid mood swings. Seek immediate help from a healthcare professional or call a crisis hotline if you experience these symptoms."
     ],
     "self care postpartum": [
-        "Here are some self-care tips after childbirth【783358645326039†L350-L369】:\n"
+        "Here are some self-care tips after childbirth:\n"
         "1. Rest as much as possible—sleep when your baby sleeps and accept help with chores and childcare.\n"
-        "2. Make time to socialise or spend time with your partner and avoid major life changes【783358645326039†L350-L369】.\n"
-        "3. Talk about your feelings with supportive friends, family or a counselor and join support groups【783358645326039†L350-L369】.\n"
-        "4. Eat healthy foods, stay hydrated and engage in physical activity【783358645326039†L382-L389】.\n"
+        "2. Make time to socialise or spend time with your partner and avoid major life changes.\n"
+        "3. Talk about your feelings with supportive friends, family or a counselor and join support groups.\n"
+        "4. Eat healthy foods, stay hydrated and engage in physical activity.\n"
         "5. If you have persistent or worsening symptoms, seek guidance from a healthcare provider."
     ],
     # Additional intents to provide richer guidance and knowledge
     "emotional well-being postpartum": [
         "Here are some suggestions for maintaining emotional well-being after childbirth:\n"
         "1. Talk about your feelings with a trusted person or join a support group.\n"
-        "2. Rest and sleep when your baby sleeps—ask for help with chores or childcare when you can【783358645326039†L350-L369】.\n"
-        "3. Eat nourishing foods, stay hydrated and engage in light physical activity【783358645326039†L350-L369】.\n"
-        "4. Avoid alcohol and recreational drugs【783358645326039†L350-L369】.\n"
+        "2. Rest and sleep when your baby sleeps—ask for help with chores or childcare when you can.\n"
+        "3. Eat nourishing foods, stay hydrated and engage in light physical activity.\n"
+        "4. Avoid alcohol and recreational drugs.\n"
         "5. If feelings of sadness or anxiety persist for more than two weeks, contact a healthcare provider or mental-health professional."
     ],
     "fear of pregnancy": [
@@ -219,45 +239,45 @@ FAQ: Dict[str, List[str]] = {
     ],
     "relationships postpartum": [
         "Relationships can be strained after a baby arrives. Here are some ideas to help:\n"
-        "1. Communicate openly with your partner about your feelings and needs【783358645326039†L350-L369】.\n"
+        "1. Communicate openly with your partner about your feelings and needs.\n"
         "2. Set boundaries with extended family and prioritise your immediate family's well-being.\n"
-        "3. Ask for help with childcare or household tasks to reduce stress【783358645326039†L350-L369】.\n"
+        "3. Ask for help with childcare or household tasks to reduce stress.\n"
         "4. Make time to spend with your partner, even short moments, to maintain connection.\n"
         "5. Consider couples counseling if you feel your relationship is under strain."
     ],
     "family support postpartum": [
         "Building a supportive family environment is important after childbirth:\n"
-        "1. Share your feelings and needs with family members and accept their help【783358645326039†L350-L369】.\n"
-        "2. Ask relatives or friends to assist with chores, meals or childcare so you can rest【783358645326039†L350-L369】.\n"
+        "1. Share your feelings and needs with family members and accept their help.\n"
+        "2. Ask relatives or friends to assist with chores, meals or childcare so you can rest.\n"
         "3. Make time to spend with your partner and older children to foster connection.\n"
-        "4. Talk to other parents or join a support group to gain perspective and support【783358645326039†L350-L369】.\n"
+        "4. Talk to other parents or join a support group to gain perspective and support.\n"
         "5. Communicate boundaries and expectations clearly to avoid misunderstandings."
     ],
     "support network postpartum": [
         "Here are some tips for building a support network after childbirth:\n"
-        "1. Talk to your partner, family and close friends about how you’re feeling and ask for their support【783358645326039†L350-L369】.\n"
-        "2. Join local parenting groups or online forums to connect with other new parents【783358645326039†L350-L369】.\n"
+        "1. Talk to your partner, family and close friends about how you're feeling and ask for their support.\n"
+        "2. Join local parenting groups or online forums to connect with other new parents.\n"
         "3. Attend support groups offered by hospitals, community organizations or mental-health charities.\n"
-        "4. Ask your healthcare provider for recommendations on local resources and support services【783358645326039†L350-L369】.\n"
+        "4. Ask your healthcare provider for recommendations on local resources and support services.\n"
         "5. Stay connected with friends, even through calls or messages, to avoid isolation."
     ],
     "postpartum depression risk factors": [
-        "Risk factors for postpartum depression include a personal or family history of depression or anxiety, a lack of social support, stressful life events, complications during pregnancy or delivery, financial stress and hormonal changes. If you think you’re at risk, talk to your healthcare provider for support."
+        "Risk factors for postpartum depression include a personal or family history of depression or anxiety, a lack of social support, stressful life events, complications during pregnancy or delivery, financial stress and hormonal changes. If you think you're at risk, talk to your healthcare provider for support."
     ],
     "postpartum psychosis": [
-        "Postpartum psychosis is a rare but serious mental health emergency that can occur after childbirth. Symptoms may include severe agitation, confusion, paranoia, hallucinations, rapid mood swings and thoughts of harming yourself or your baby【667415088068397†L132-L139】. It requires immediate medical attention; contact emergency services or go to the hospital if you suspect it."
+        "Postpartum psychosis is a rare but serious mental health emergency that can occur after childbirth. Symptoms may include severe agitation, confusion, paranoia, hallucinations, rapid mood swings and thoughts of harming yourself or your baby. It requires immediate medical attention; contact emergency services or go to the hospital if you suspect it."
     ],
     "help someone postpartum depression": [
         "If someone you care about is experiencing postpartum depression, you can help by:\n"
-        "1. Learning the signs of depression and encouraging them to seek medical care【667415088068397†L452-L464】.\n"
-        "2. Being a good listener and letting them share their feelings without judgment【667415088068397†L452-L464】.\n"
-        "3. Offering to help with daily tasks like cooking, cleaning or running errands【667415088068397†L452-L464】.\n"
-        "4. Offering to watch their baby while they sleep or rest【667415088068397†L452-L464】.\n"
-        "5. Encouraging them to see a therapist or mental-health provider and offering to accompany them if needed【667415088068397†L452-L464】."
+        "1. Learning the signs of depression and encouraging them to seek medical care.\n"
+        "2. Being a good listener and letting them share their feelings without judgment.\n"
+        "3. Offering to help with daily tasks like cooking, cleaning or running errands.\n"
+        "4. Offering to watch their baby while they sleep or rest.\n"
+        "5. Encouraging them to see a therapist or mental-health provider and offering to accompany them if needed."
     ],
     "baby blues vs postpartum depression": [
-        "The 'baby blues' affect up to 75% of new mothers and include mood swings, crying spells and anxiety. These symptoms usually begin within a few days of delivery and go away within two weeks without treatment【667415088068397†L107-L115】.\n"
-        "Postpartum depression is more serious and lasts longer, with symptoms such as extreme sadness, irritability, fatigue, guilt and difficulty caring for yourself or your baby【667415088068397†L117-L126】. If symptoms persist beyond two weeks or interfere with daily life, contact your healthcare provider."
+        "The 'baby blues' affect up to 75% of new mothers and include mood swings, crying spells and anxiety. These symptoms usually begin within a few days of delivery and go away within two weeks without treatment.\n"
+        "Postpartum depression is more serious and lasts longer, with symptoms such as extreme sadness, irritability, fatigue, guilt and difficulty caring for yourself or your baby. If symptoms persist beyond two weeks or interfere with daily life, contact your healthcare provider."
     ],
 
 }
@@ -268,6 +288,7 @@ FAQ: Dict[str, List[str]] = {
 _vectorizer = TfidfVectorizer().fit(FAQ.keys())
 _faq_matrix = _vectorizer.transform(FAQ.keys())
 _faq_keys = list(FAQ.keys())
+
 
 def _match_intent(message: str) -> str:
     """Match the user's message to one of the FAQ keys using cosine similarity.
@@ -286,6 +307,7 @@ def _match_intent(message: str) -> str:
         return _faq_keys[best_idx]
     return ""
 
+
 def _is_crisis(message: str) -> bool:
     """Detect crisis keywords (self‑harm, suicide, etc.)."""
     crisis_keywords = [
@@ -298,20 +320,85 @@ def _is_crisis(message: str) -> bool:
     text = message.lower()
     return any(kw in text for kw in crisis_keywords)
 
+
+def _get_risk_level_response(patient_json: Optional[Dict[str, Any]]) -> Optional[str]:
+    """Extract risk level from patient data and return appropriate response."""
+    if not patient_json:
+        return None
+    
+    risk_level = patient_json.get("risk_level") or patient_json.get("prediction")
+    if risk_level and risk_level.lower() in FAQ:
+        return FAQ[risk_level.lower()][0]
+    return None
+
+
 @router.post("/chat", response_model=ChatResponse)
 def chat_endpoint(req: ChatRequest) -> ChatResponse:
-    """Handle chat requests."""
-    message = req.message or ""
-    # Crisis handling first
-    if _is_crisis(message):
+    """Handle chat requests - supports both simple and complex formats."""
+    
+    # Extract the user message from either format
+    message = ""
+    if req.message:
+        # Simple format: single message string
+        message = req.message
+    elif req.messages:
+        # Complex format: extract last user message from conversation
+        user_messages = [m for m in req.messages if m.role == "user"]
+        if user_messages:
+            message = user_messages[-1].content
+    
+    # Handle empty message
+    if not message.strip():
+        # Check if we have patient context to provide personalized greeting
+        if req.patient_json:
+            risk_response = _get_risk_level_response(req.patient_json)
+            if risk_response:
+                return ChatResponse(
+                    response=risk_response,
+                    reply=risk_response,
+                    timestamp=datetime.now().isoformat(),
+                    provider="Rule-Based Chatbot",
+                    using_llm=False
+                )
+        
         return ChatResponse(
-            reply=(
-                "I'm really sorry that you're feeling this way. "
-                "Your safety is the most important thing. "
-                "Please contact a trusted friend, family member or a crisis hotline in your area immediately. "
-                "If you're in Bangladesh, you can call the Kaan Pete Roi helpline at 01742441122 (8 pm–12 am)."
-            )
+            response="Hello! I'm here to help. How can I support you today?",
+            reply="Hello! I'm here to help. How can I support you today?",
+            timestamp=datetime.now().isoformat(),
+            provider="Rule-Based Chatbot",
+            using_llm=False
         )
+    
+    # Crisis handling first - this is critical for safety
+    if _is_crisis(message):
+        crisis_response = (
+            "I'm really sorry that you're feeling this way. "
+            "Your safety is the most important thing. "
+            "Please contact a trusted friend, family member or a crisis hotline in your area immediately. "
+            "If you're in Bangladesh, you can call the Kaan Pete Roi helpline at 01742441122 (8 pm–12 am). "
+            "In the US, call or text 988 for the Suicide and Crisis Lifeline."
+        )
+        return ChatResponse(
+            response=crisis_response,
+            reply=crisis_response,
+            timestamp=datetime.now().isoformat(),
+            provider="Rule-Based Chatbot (Crisis)",
+            using_llm=False
+        )
+    
+    # Check if user is asking about their risk level
+    if req.patient_json and any(kw in message.lower() for kw in ["risk", "result", "assessment", "score", "level"]):
+        risk_response = _get_risk_level_response(req.patient_json)
+        if risk_response:
+            return ChatResponse(
+                response=risk_response,
+                reply=risk_response,
+                timestamp=datetime.now().isoformat(),
+                provider="Rule-Based Chatbot",
+                using_llm=False
+            )
+    
+    # Match intent using TF-IDF
     key = _match_intent(message)
     if key:
         responses = FAQ[key]
@@ -319,7 +406,16 @@ def chat_endpoint(req: ChatRequest) -> ChatResponse:
     else:
         # Neutral fallback if we can't match the intent
         reply = (
-            "Thank you for sharing.  I'm here to listen and support you. "
-            "Could you tell me a bit more about what's on your mind?"
+            "Thank you for sharing. I'm here to listen and support you. "
+            "Could you tell me a bit more about what's on your mind? "
+            "I can help with questions about postpartum depression, coping strategies, "
+            "self-care tips, and finding support resources."
         )
-    return ChatResponse(reply=reply)
+    
+    return ChatResponse(
+        response=reply,
+        reply=reply,
+        timestamp=datetime.now().isoformat(),
+        provider="Rule-Based Chatbot",
+        using_llm=False
+    )
